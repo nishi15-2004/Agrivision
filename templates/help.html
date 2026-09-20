@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Farmer Help - AgriMitra</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/help.css') }}">
+          <script src="{{ url_for('static', filename='js/language.js') }}"></script>
+</head>
+
+<body>
+
+<div class="help-page">
+
+    <!-- HEADER -->
+    <header class="help-header">
+
+        <div>
+            <h1>📞 Farmer Help & Support</h1>
+
+            <p>
+                Get important agricultural support, emergency contacts,
+                helplines and useful information in one place.
+            </p>
+        </div>
+
+        <a href="{{ url_for('home') }}" class="home-btn">
+            ← Home
+        </a>
+
+    </header>
+
+
+    <!-- QUICK HELP -->
+    <section class="quick-help">
+
+        <h2>🚨 Need Help Quickly?</h2>
+
+        <div class="help-grid">
+
+            <div class="help-card emergency">
+
+                <div class="card-icon">📞</div>
+
+                <h3>Kisan Call Centre</h3>
+
+                <p>
+                    Get agriculture-related information and advice
+                    from the Government of India.
+                </p>
+
+                <a href="tel:18001801551" class="call-btn">
+                    📞 Call 1800-180-1551
+                </a>
+
+            </div>
+
+
+            <div class="help-card">
+
+                <div class="card-icon">🌾</div>
+
+                <h3>Crop Disease</h3>
+
+                <p>
+                    Upload a crop image through AgriMitra's
+                    Disease Detection module.
+                </p>
+
+                <a href="{{ url_for('disease') }}" class="action-btn">
+                    🦠 Detect Disease
+                </a>
+
+            </div>
+
+
+            <div class="help-card">
+
+                <div class="card-icon">🌦️</div>
+
+                <h3>Weather Emergency</h3>
+
+                <p>
+                    Check current weather and forecast before
+                    irrigation, spraying or harvesting.
+                </p>
+
+                <a href="{{ url_for('weather') }}" class="action-btn">
+                    🌦 Check Weather
+                </a>
+
+            </div>
+
+
+            <div class="help-card">
+
+                <div class="card-icon">💰</div>
+
+                <h3>Crop Damage</h3>
+
+                <p>
+                    Find information about crop damage,
+                    insurance and compensation support.
+                </p>
+
+                <a href="{{ url_for('compensation') }}" class="action-btn">
+                    💰 View Compensation
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SERVICES -->
+    <section class="services">
+
+        <h2>🌱 Agrivision Support</h2>
+
+        <div class="service-grid">
+
+            <a href="{{ url_for('weather') }}" class="service">
+                <span>🌦️</span>
+                <div>
+                    <h3>Weather</h3>
+                    <p>Check weather conditions and forecast.</p>
+                </div>
+            </a>
+
+
+            <a href="{{ url_for('disease') }}" class="service">
+                <span>🦠</span>
+                <div>
+                    <h3>Disease Detection</h3>
+                    <p>Identify possible crop diseases using an image.</p>
+                </div>
+            </a>
+
+
+            <a href="{{ url_for('schemes') }}" class="service">
+                <span>🏛️</span>
+                <div>
+                    <h3>Government Schemes</h3>
+                    <p>Find government agriculture schemes and portals.</p>
+                </div>
+            </a>
+
+
+            <a href="{{ url_for('compensation') }}" class="service">
+                <span>💰</span>
+                <div>
+                    <h3>Compensation</h3>
+                    <p>Check crop-loss and compensation information.</p>
+                </div>
+            </a>
+
+
+            <a href="{{ url_for('market') }}" class="service">
+                <span>📊</span>
+                <div>
+                    <h3>Market Prices</h3>
+                    <p>Check agricultural mandi prices.</p>
+                </div>
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FAQ -->
+    <section class="faq">
+
+        <h2>❓ Frequently Asked Questions</h2>
+
+
+        <details>
+            <summary>How can I check the weather?</summary>
+
+            <p>
+                Open the Weather section and search for your city.
+                You can also use the current-location option if
+                location access is enabled.
+            </p>
+        </details>
+
+
+        <details>
+            <summary>How can I detect a crop disease?</summary>
+
+            <p>
+                Open Disease Detection, upload a clear crop-leaf image
+                and submit it for analysis.
+            </p>
+        </details>
+
+
+        <details>
+            <summary>Where can I find government schemes?</summary>
+
+            <p>
+                Open Government Schemes to view important agricultural
+                schemes and access their official government portals.
+            </p>
+        </details>
+
+
+        <details>
+            <summary>How can I check crop-loss compensation?</summary>
+
+            <p>
+                Open Compensation and select the type of crop damage
+                to view relevant information and available support.
+            </p>
+        </details>
+
+
+        <details>
+            <summary>How can I check mandi prices?</summary>
+
+            <p>
+                Open Market Prices, select a commodity and optionally
+                select state, district and mandi to search available
+                market data.
+            </p>
+        </details>
+
+    </section>
+
+
+    <!-- IMPORTANT -->
+    <section class="important">
+
+        <h2>⚠️ Important</h2>
+
+        <p>
+            Agrivision provides information and links to relevant
+            services. Before taking financial, agricultural or
+            insurance decisions, verify the latest information
+            with the concerned government department or official portal.
+        </p>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <h2>🌾 Agrivision</h2>
+
+        <p>
+            Smart Agriculture Support System for Indian Farmers
+        </p>
+
+        <p>
+            © 2026 Agrivision
+        </p>
+
+    </footer>
+
+</div>
+
+</body>
+</html>

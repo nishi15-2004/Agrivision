@@ -1,0 +1,732 @@
+/* ==================================================
+        AGRIMITRA DISEASE DETECTION CSS
+================================================== */
+
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+    font-family:'Poppins',sans-serif;
+
+}
+
+
+body{
+
+    min-height:100vh;
+
+    background:
+    linear-gradient(
+        135deg,
+        #dcedc8,
+        #e8f5e9
+    );
+
+}
+
+
+.disease-container{
+
+    width:92%;
+
+    max-width:1300px;
+
+    margin:40px auto;
+
+}
+
+
+/* ==========================
+        HEADER
+========================== */
+
+
+.disease-header{
+
+    text-align:center;
+
+    margin-bottom:40px;
+
+}
+
+
+.disease-header h1{
+
+    font-size:42px;
+
+    color:#1b5e20;
+
+    font-weight:700;
+
+}
+
+
+.disease-header p{
+
+    margin-top:12px;
+
+    color:#555;
+
+    font-size:18px;
+
+}
+
+
+
+/* ==========================
+        UPLOAD CARD
+========================== */
+
+
+.upload-card{
+
+    background:white;
+
+    border-radius:30px;
+
+    padding:45px;
+
+    text-align:center;
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,.12);
+
+    max-width:700px;
+
+    margin:auto;
+
+}
+
+
+
+.upload-icon{
+
+    width:90px;
+
+    height:90px;
+
+    margin:auto;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:45px;
+
+    background:#e8f5e9;
+
+}
+
+
+
+.upload-card h2{
+
+    margin-top:25px;
+
+    color:#2e7d32;
+
+    font-size:30px;
+
+}
+
+
+
+.upload-card p{
+
+    color:#666;
+
+    margin:12px 0 25px;
+
+}
+
+
+
+/* ==========================
+        FILE INPUT
+========================== */
+
+
+.upload-card input[type="file"]{
+
+    display:none;
+
+}
+
+
+
+.upload-btn{
+
+    display:inline-block;
+
+    background:#43a047;
+
+    color:white;
+
+    padding:14px 30px;
+
+    border-radius:15px;
+
+    cursor:pointer;
+
+    margin-right:12px;
+
+    transition:.3s;
+
+}
+
+
+
+.upload-btn:hover{
+
+    background:#2e7d32;
+
+    transform:translateY(-3px);
+
+}
+
+
+
+
+.upload-card button{
+
+    background:#1b5e20;
+
+    color:white;
+
+    border:none;
+
+    padding:15px 30px;
+
+    border-radius:15px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    transition:.3s;
+
+}
+
+
+
+.upload-card button:hover{
+
+    background:#0d3b12;
+
+    transform:translateY(-3px);
+
+}
+/* ==================================================
+        IMAGE PREVIEW CARD
+================================================== */
+
+
+.preview-card{
+
+    margin-top:40px;
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:28px;
+
+    text-align:center;
+
+    box-shadow:
+    0 12px 30px rgba(0,0,0,.12);
+
+}
+
+
+.preview-card h2{
+
+    color:#2e7d32;
+
+    margin-bottom:25px;
+
+    font-size:28px;
+
+}
+
+
+
+.preview-card img{
+
+    width:350px;
+
+    max-width:90%;
+
+    height:300px;
+
+    object-fit:cover;
+
+    border-radius:20px;
+
+}
+
+
+
+
+/* ==================================================
+        RESULT CARD
+================================================== */
+
+
+.result-card{
+
+    margin-top:40px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #43a047,
+        #66bb6a
+    );
+
+    color:white;
+
+    padding:35px;
+
+    border-radius:28px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:25px;
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,.18);
+
+}
+
+
+
+.result-icon{
+
+    width:90px;
+
+    height:90px;
+
+    background:white;
+
+    color:#2e7d32;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:50px;
+
+}
+
+
+
+.result-content h2{
+
+    font-size:26px;
+
+    margin-bottom:10px;
+
+}
+
+
+
+.result-content h3{
+
+    font-size:32px;
+
+}
+
+
+
+.result-content p{
+
+    margin-top:8px;
+
+    font-size:18px;
+
+}
+
+
+
+
+
+/* ==================================================
+        TREATMENT & PREVENTION
+================================================== */
+
+
+.info-section{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:25px;
+
+    margin-top:35px;
+
+}
+
+
+
+.info-box{
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:25px;
+
+    text-align:center;
+
+    box-shadow:
+    0 12px 25px rgba(0,0,0,.12);
+
+    transition:.3s;
+
+}
+
+
+
+.info-box:hover{
+
+    transform:translateY(-8px);
+
+}
+
+
+
+.box-icon{
+
+    font-size:50px;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.info-box h2{
+
+    color:#2e7d32;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.info-box p{
+
+    color:#555;
+
+    line-height:1.8;
+
+    font-size:17px;
+
+}
+/* ==================================================
+        SMART FARMING TIPS
+================================================== */
+
+
+.farmer-tips{
+
+    margin-top:45px;
+
+}
+
+
+
+.farmer-tips h2{
+
+    text-align:center;
+
+    color:#1b5e20;
+
+    font-size:32px;
+
+    margin-bottom:30px;
+
+}
+
+
+
+.tips-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:25px;
+
+}
+
+
+
+.tip-card{
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:25px;
+
+    text-align:center;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.12);
+
+    transition:.3s;
+
+}
+
+
+
+.tip-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+
+
+.tip-card span{
+
+    font-size:45px;
+
+}
+
+
+
+.tip-card h3{
+
+    color:#2e7d32;
+
+    margin:15px 0;
+
+    font-size:22px;
+
+}
+
+
+
+.tip-card p{
+
+    color:#666;
+
+    line-height:1.7;
+
+}
+
+
+
+
+
+/* ==================================================
+        NOTE BOX
+================================================== */
+
+
+.note-box{
+
+    margin-top:40px;
+
+    background:#fff8e1;
+
+    color:#795548;
+
+    padding:20px;
+
+    border-radius:18px;
+
+    text-align:center;
+
+    font-size:16px;
+
+    border-left:6px solid #ffb300;
+
+}
+
+
+
+
+
+/* ==================================================
+        FOOTER
+================================================== */
+
+
+.disease-footer{
+
+    margin-top:60px;
+
+    background:#1b5e20;
+
+    color:white;
+
+    padding:30px;
+
+    text-align:center;
+
+    border-radius:25px;
+
+}
+
+
+
+.disease-footer h2{
+
+    margin-bottom:10px;
+
+}
+
+
+
+.disease-footer p{
+
+    opacity:.9;
+
+}
+
+
+
+
+
+/* ==================================================
+        RESPONSIVE DESIGN
+================================================== */
+
+
+
+@media(max-width:900px){
+
+
+    .info-section{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .tips-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .result-card{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+
+}
+
+
+
+@media(max-width:600px){
+
+
+    .disease-container{
+
+        width:95%;
+
+    }
+
+
+
+    .disease-header h1{
+
+        font-size:30px;
+
+    }
+
+
+
+    .upload-card{
+
+        padding:25px;
+
+    }
+
+
+
+    .upload-btn,
+    .upload-card button{
+
+        width:100%;
+
+        margin:8px 0;
+
+    }
+
+
+
+    .preview-card img{
+
+        height:220px;
+
+    }
+
+
+}
+/* ==========================
+   CROP SELECTION
+========================== */
+
+.crop-select {
+    margin: 25px auto;
+    text-align: left;
+    max-width: 420px;
+}
+
+.crop-select label {
+    display: block;
+    margin-bottom: 10px;
+    color: #1b5e20;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.crop-select select {
+    width: 100%;
+    padding: 14px 18px;
+    border: 2px solid #a5d6a7;
+    border-radius: 14px;
+    background: #f8fff8;
+    color: #2e7d32;
+    font-size: 16px;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.crop-select select:focus {
+    border-color: #43a047;
+    box-shadow: 0 0 0 4px rgba(67, 160, 71, 0.12);
+}
+
+.crop-select select:hover {
+    border-color: #43a047;
+}

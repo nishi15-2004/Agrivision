@@ -1,0 +1,12 @@
+{
+  "welcome": "Welcome to AgriMitra",
+  "description": "Get weather updates, crop disease detection, government schemes and compensation information in one place.",
+  "explore": "Explore Now",
+  "home": "Home",
+  "weather": "Weather",
+  "disease": "Disease Detection",
+  "schemes": "Government Schemes",
+  "compensation": "Compensation",
+  "help": "Help",
+  "language": "Language"
+}

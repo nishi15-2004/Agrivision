@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Market Prices - Agrivision</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/market.css') }}">
+          <script src="{{ url_for('static', filename='js/language.js') }}"></script>
+</head>
+
+<body>
+
+    <div class="market-page">
+
+        <!-- HEADER -->
+        <section class="market-header">
+            <div>
+                <h1>🌾 AgriMitra Market Prices</h1>
+                <p>
+                    Check agricultural mandi prices from different parts of India
+                </p>
+            </div>
+
+            <a href="/" class="home-btn">← Home</a>
+        </section>
+
+
+        <!-- SEARCH SECTION -->
+        <section class="search-card">
+
+            <h2>🔎 Find Mandi Price</h2>
+
+            <div class="search-grid">
+
+                <div class="input-group">
+                    <label>Crop / Commodity</label>
+
+                 <select id="crop">
+
+    <option value="">Select Crop / Commodity</option>
+
+    <!-- CEREALS & MILLETS -->
+    <option>Wheat</option>
+    <option>Rice</option>
+    <option>Maize</option>
+    <option>Barley</option>
+    <option>Jowar</option>
+    <option>Bajra</option>
+    <option>Ragi</option>
+    <option>Foxtail Millet</option>
+    <option>Little Millet</option>
+    <option>Kodo Millet</option>
+    <option>Proso Millet</option>
+    <option>Barnyard Millet</option>
+    <option>Finger Millet</option>
+    <option>Pearl Millet</option>
+    <option>Sorghum</option>
+    <option>Oats</option>
+    <option>Rye</option>
+    <option>Fonio</option>
+    <option>Teff</option>
+    <option>Triticale</option>
+    <option>Quinoa</option>
+    <option>Buckwheat</option>
+
+    <!-- PULSES -->
+    <option>Gram</option>
+    <option>Chickpea</option>
+    <option>Arhar</option>
+    <option>Tur</option>
+    <option>Moong</option>
+    <option>Urad</option>
+    <option>Masoor</option>
+    <option>Lentil</option>
+    <option>Peas</option>
+    <option>Field Pea</option>
+    <option>Pigeon Pea</option>
+    <option>Black Gram</option>
+    <option>Green Gram</option>
+    <option>Red Gram</option>
+    <option>Kidney Bean</option>
+    <option>Rajma</option>
+    <option>Cowpea</option>
+    <option>Horse Gram</option>
+    <option>Moth Bean</option>
+    <option>Cluster Bean</option>
+    <option>Broad Bean</option>
+    <option>French Bean</option>
+    <option>Black Eyed Pea</option>
+
+    <!-- OILSEEDS -->
+    <option>Mustard</option>
+    <option>Rapeseed</option>
+    <option>Groundnut</option>
+    <option>Soybean</option>
+    <option>Sunflower</option>
+    <option>Safflower</option>
+    <option>Sesame</option>
+    <option>Linseed</option>
+    <option>Flax Seed</option>
+    <option>Castor</option>
+    <option>Niger Seed</option>
+    <option>Coconut</option>
+    <option>Palm Oil</option>
+    <option>Canola</option>
+    <option>Hemp Seed</option>
+
+    <!-- VEGETABLES -->
+    <option>Potato</option>
+    <option>Onion</option>
+    <option>Tomato</option>
+    <option>Garlic</option>
+    <option>Ginger</option>
+    <option>Green Chilli</option>
+    <option>Red Chilli</option>
+    <option>Capsicum</option>
+    <option>Bell Pepper</option>
+    <option>Brinjal</option>
+    <option>Eggplant</option>
+    <option>Okra</option>
+    <option>Lady Finger</option>
+    <option>Cauliflower</option>
+    <option>Cabbage</option>
+    <option>Broccoli</option>
+    <option>Carrot</option>
+    <option>Radish</option>
+    <option>Turnip</option>
+    <option>Beetroot</option>
+    <option>Spinach</option>
+    <option>Lettuce</option>
+    <option>Peas</option>
+    <option>Cucumber</option>
+    <option>Pumpkin</option>
+    <option>Bottle Gourd</option>
+    <option>Bitter Gourd</option>
+    <option>Ridge Gourd</option>
+    <option>Sponge Gourd</option>
+    <option>Snake Gourd</option>
+    <option>Pointed Gourd</option>
+    <option>Round Gourd</option>
+    <option>Ash Gourd</option>
+    <option>Sweet Potato</option>
+    <option>Colocasia</option>
+    <option>Taro</option>
+    <option>Yam</option>
+    <option>Cassava</option>
+    <option>Tapioca</option>
+    <option>Drumstick</option>
+    <option>Raw Banana</option>
+    <option>Raw Papaya</option>
+    <option>Sweet Corn</option>
+    <option>Baby Corn</option>
+    <option>Mushroom</option>
+    <option>Celery</option>
+    <option>Parsley</option>
+    <option>Coriander Leaves</option>
+    <option>Mint</option>
+    <option>Curry Leaves</option>
+    <option>Fenugreek Leaves</option>
+    <option>Amaranth Leaves</option>
+    <option>Mustard Greens</option>
+
+    <!-- FRUITS -->
+    <option>Apple</option>
+    <option>Banana</option>
+    <option>Mango</option>
+    <option>Orange</option>
+    <option>Sweet Lime</option>
+    <option>Lemon</option>
+    <option>Lime</option>
+    <option>Grapes</option>
+    <option>Guava</option>
+    <option>Papaya</option>
+    <option>Pineapple</option>
+    <option>Watermelon</option>
+    <option>Muskmelon</option>
+    <option>Pomegranate</option>
+    <option>Jackfruit</option>
+    <option>Custard Apple</option>
+    <option>Chikoo</option>
+    <option>Sapota</option>
+    <option>Litchi</option>
+    <option>Peach</option>
+    <option>Pear</option>
+    <option>Plum</option>
+    <option>Apricot</option>
+    <option>Cherry</option>
+    <option>Strawberry</option>
+    <option>Raspberry</option>
+    <option>Blueberry</option>
+    <option>Blackberry</option>
+    <option>Mulberry</option>
+    <option>Cranberry</option>
+    <option>Gooseberry</option>
+    <option>Amla</option>
+    <option>Ber</option>
+    <option>Jamun</option>
+    <option>Bael</option>
+    <option>Fig</option>
+    <option>Kiwi</option>
+    <option>Dragon Fruit</option>
+    <option>Passion Fruit</option>
+    <option>Avocado</option>
+    <option>Olive</option>
+    <option>Persimmon</option>
+    <option>Quince</option>
+    <option>Starfruit</option>
+    <option>Tamarind</option>
+    <option>Wood Apple</option>
+    <option>Mandarin</option>
+    <option>Mosambi</option>
+
+    <!-- SPICES -->
+    <option>Turmeric</option>
+    <option>Cumin</option>
+    <option>Coriander Seed</option>
+    <option>Fennel</option>
+    <option>Fenugreek Seed</option>
+    <option>Ajwain</option>
+    <option>Carom Seed</option>
+    <option>Black Pepper</option>
+    <option>White Pepper</option>
+    <option>Cardamom</option>
+    <option>Clove</option>
+    <option>Cinnamon</option>
+    <option>Nutmeg</option>
+    <option>Mace</option>
+    <option>Saffron</option>
+    <option>Bay Leaf</option>
+    <option>Dry Ginger</option>
+    <option>Dry Chilli</option>
+    <option>Green Chilli</option>
+    <option>Garlic</option>
+    <option>Asafoetida</option>
+    <option>Mustard Seed</option>
+    <option>Dill Seed</option>
+    <option>Poppy Seed</option>
+    <option>Sesame Seed</option>
+    <option>Chia Seed</option>
+    <option>Isabgol</option>
+
+    <!-- COMMERCIAL CROPS -->
+    <option>Cotton</option>
+    <option>Sugarcane</option>
+    <option>Jute</option>
+    <option>Tobacco</option>
+    <option>Tea</option>
+    <option>Coffee</option>
+    <option>Rubber</option>
+    <option>Cocoa</option>
+    <option>Arecanut</option>
+    <option>Betel Nut</option>
+    <option>Betel Leaf</option>
+    <option>Vanilla</option>
+    <option>Hemp</option>
+    <option>Flax</option>
+    <option>Napier Grass</option>
+    <option>Fodder Maize</option>
+    <option>Lucerne</option>
+    <option>Alfalfa</option>
+    <option>Clover</option>
+    <option>Barseem</option>
+
+    <!-- PLANTATION / TREE CROPS -->
+    <option>Cashew</option>
+    <option>Almond</option>
+    <option>Walnut</option>
+    <option>Pistachio</option>
+    <option>Pecan</option>
+    <option>Coconut</option>
+    <option>Arecanut</option>
+    <option>Neem</option>
+    <option>Moringa</option>
+    <option>Drumstick</option>
+    <option>Bael</option>
+    <option>Jamun</option>
+    <option>Mahua</option>
+    <option>Teak</option>
+    <option>Bamboo</option>
+
+    <!-- FLOWERS / HORTICULTURE -->
+    <option>Rose</option>
+    <option>Marigold</option>
+    <option>Jasmine</option>
+    <option>Chrysanthemum</option>
+    <option>Gerbera</option>
+    <option>Orchid</option>
+    <option>Tulip</option>
+    <option>Lily</option>
+    <option>Hibiscus</option>
+    <option>Lavender</option>
+    <option>Lotus</option>
+    <option>Lotus Root</option>
+    <option>Stevia</option>
+    <option>Aloe Vera</option>
+    <option>Citronella</option>
+    <option>Lemongrass</option>
+    <option>Vetiver</option>
+
+    <!-- ADDITIONAL INDIAN CROPS -->
+    <option>Amaranth</option>
+    <option>Chickory</option>
+    <option>Chia</option>
+    <option>Drumstick</option>
+    <option>Finger Millet</option>
+    <option>Green Gram</option>
+    <option>Groundnut</option>
+    <option>Kidney Bean</option>
+    <option>Little Millet</option>
+    <option>Maize</option>
+    <option>Mandarin</option>
+    <option>Mustard</option>
+    <option>Oat</option>
+    <option>Pearl Millet</option>
+    <option>Proso Millet</option>
+    <option>Quinoa</option>
+    <option>Rice</option>
+    <option>Rye</option>
+    <option>Safflower</option>
+    <option>Sorghum</option>
+    <option>Teff</option>
+    <option>Wheat</option>
+    <option>Yam</option>
+
+    <!-- MORE MARKET COMMODITIES -->
+    <option>Black Gram Dal</option>
+    <option>Green Gram Dal</option>
+    <option>Red Gram Dal</option>
+    <option>Bengal Gram Dal</option>
+    <option>Lentil Dal</option>
+    <option>Peanut</option>
+    <option>Peanut Kernel</option>
+    <option>Copra</option>
+    <option>Mustard Cake</option>
+    <option>Soybean Meal</option>
+    <option>Maize Flour</option>
+    <option>Wheat Flour</option>
+    <option>Rice Bran</option>
+    <option>Rice Bran Oil</option>
+    <option>Jaggery</option>
+    <option>Khandsari</option>
+    <option>Raw Sugar</option>
+    <option>Dry Coconut</option>
+    <option>Fresh Coconut</option>
+    <option>Dry Peas</option>
+    <option>Green Peas</option>
+    <option>Dry Dates</option>
+    <option>Raisins</option>
+    <option>Dates</option>
+    <option>Prunes</option>
+    <option>Walnuts</option>
+    <option>Almonds</option>
+    <option>Cashew Nut</option>
+    <option>Cashew Kernel</option>
+    <option>Groundnut Oil</option>
+    <option>Sesame Oil</option>
+    <option>Sunflower Oil</option>
+    <option>Mustard Oil</option>
+
+</select>
+                </div>
+
+
+                <div class="input-group">
+                    <label>State</label>
+
+                    <select id="state">
+                        <option value="">All India / Select State</option>
+
+                        <option>Andhra Pradesh</option>
+                        <option>Arunachal Pradesh</option>
+                        <option>Assam</option>
+                        <option>Bihar</option>
+                        <option>Chhattisgarh</option>
+                        <option>Goa</option>
+                        <option>Gujarat</option>
+                        <option>Haryana</option>
+                        <option>Himachal Pradesh</option>
+                        <option>Jharkhand</option>
+                        <option>Karnataka</option>
+                        <option>Kerala</option>
+                        <option>Madhya Pradesh</option>
+                        <option>Maharashtra</option>
+                        <option>Manipur</option>
+                        <option>Meghalaya</option>
+                        <option>Mizoram</option>
+                        <option>Nagaland</option>
+                        <option>Odisha</option>
+                        <option>Punjab</option>
+                        <option>Rajasthan</option>
+                        <option>Sikkim</option>
+                        <option>Tamil Nadu</option>
+                        <option>Telangana</option>
+                        <option>Tripura</option>
+                        <option>Uttar Pradesh</option>
+                        <option>Uttarakhand</option>
+                        <option>West Bengal</option>
+
+                        <option>Andaman and Nicobar Islands</option>
+                        <option>Chandigarh</option>
+                        <option>Dadra and Nagar Haveli and Daman and Diu</option>
+                        <option>Delhi</option>
+                        <option>Jammu and Kashmir</option>
+                        <option>Ladakh</option>
+                        <option>Lakshadweep</option>
+                        <option>Puducherry</option>
+                    </select>
+                </div>
+
+
+                <div class="input-group">
+                    <label>District</label>
+
+                    <input
+                        type="text"
+                        id="district"
+                        placeholder="Enter district">
+                </div>
+
+
+                <div class="input-group">
+                    <label>Mandi</label>
+
+                    <input
+                        type="text"
+                        id="mandi"
+                        placeholder="Enter mandi (optional)">
+                </div>
+
+            </div>
+
+
+            <button class="search-btn" onclick="searchMarketPrice()">
+                🔍 Search Market Price
+            </button>
+
+        </section>
+
+
+        <!-- STATUS -->
+        <div id="status" class="status"></div>
+
+
+        <!-- RESULTS -->
+        <section class="results-card">
+
+            <div class="results-header">
+                <h2>📊 Mandi Price Results</h2>
+
+                <span id="result-date"></span>
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Commodity</th>
+                            <th>State</th>
+                            <th>District</th>
+                            <th>Mandi</th>
+                            <th>Variety</th>
+                            <th>Min Price</th>
+                            <th>Max Price</th>
+                            <th>Modal Price</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="price-table">
+
+                        <tr>
+                            <td colspan="9" class="empty">
+                                Search for a crop to view mandi prices.
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- INFORMATION -->
+        <section class="info-card">
+
+            <h2>🌱 About Market Prices</h2>
+
+            <p>
+                AgriMitra helps farmers compare agricultural commodity
+                prices across different states, districts and mandis.
+            </p>
+
+            <p>
+                Prices shown by the live integration will come from
+                government agricultural market data. The source dataset
+                contains daily wholesale minimum, maximum and modal prices.
+            </p>
+
+            <div class="info-grid">
+
+                <div>
+                    <strong>🇮🇳 Coverage</strong>
+                    <span>Across India</span>
+                </div>
+
+                <div>
+                    <strong>📅 Updates</strong>
+                    <span>Daily market data</span>
+                </div>
+
+                <div>
+                    <strong>💰 Price Types</strong>
+                    <span>Min / Max / Modal</span>
+                </div>
+
+                <div>
+                    <strong>🏪 Market</strong>
+                    <span>APMC / Mandi</span>
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <script src="{{ url_for('static', filename='js/market.js') }}"></script>
+
+</body>
+</html>

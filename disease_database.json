@@ -1,0 +1,555 @@
+{
+    "Apple": {
+        "Apple scab": {
+            "symptoms": "Olive-green to brown spots appear on leaves and fruit. Severe infection can cause leaf drop and fruit blemishes.",
+            "prevention": [
+                "Remove fallen infected leaves and plant debris.",
+                "Maintain good air circulation by proper pruning.",
+                "Avoid excessive leaf wetness.",
+                "Use healthy planting material."
+            ],
+            "treatment": [
+                "Remove severely infected plant parts.",
+                "Apply an appropriate fungicide according to the product label and local agricultural recommendations.",
+                "Follow the recommended spray interval."
+            ],
+            "warning": "Do not apply pesticides without checking the crop label, dosage and local agricultural guidance."
+        },
+        "Black rot": {
+            "symptoms": "Dark circular lesions may develop on leaves and fruit. Fruit can develop dark rotting areas.",
+            "prevention": [
+                "Remove mummified fruit and infected plant material.",
+                "Prune dead or diseased branches.",
+                "Improve orchard sanitation.",
+                "Avoid unnecessary plant injuries."
+            ],
+            "treatment": [
+                "Remove infected fruit and branches.",
+                "Dispose of infected plant material away from the orchard.",
+                "Use an appropriate registered fungicide when recommended locally."
+            ],
+            "warning": "Use only products registered for apple and follow the label."
+        },
+        "Cedar apple rust": {
+            "symptoms": "Yellow-orange spots can appear on leaves, sometimes followed by darker structures on the underside.",
+            "prevention": [
+                "Remove nearby alternate hosts where practical.",
+                "Improve air circulation through pruning.",
+                "Remove heavily infected plant debris."
+            ],
+            "treatment": [
+                "Remove severely affected leaves where practical.",
+                "Use a locally recommended fungicide if disease pressure is high."
+            ],
+            "warning": "Fungicide selection and timing should follow local agricultural recommendations."
+        },
+        "Healthy": {
+            "symptoms": "No obvious disease symptoms detected in the uploaded image.",
+            "prevention": [
+                "Continue regular crop monitoring.",
+                "Use healthy planting material.",
+                "Maintain proper irrigation and nutrition.",
+                "Keep the field clean and well ventilated."
+            ],
+            "treatment": [
+                "No disease treatment is required when the crop is healthy."
+            ],
+            "warning": "Image-based detection is not a substitute for field inspection."
+        }
+    },
+    "Cherry_(including_sour)": {
+        "Powdery mildew": {
+            "symptoms": "White powder-like fungal growth may appear on leaves and young shoots.",
+            "prevention": [
+                "Provide good air circulation.",
+                "Avoid excessive nitrogen fertilization.",
+                "Prune overcrowded growth.",
+                "Monitor plants regularly."
+            ],
+            "treatment": [
+                "Remove severely affected plant parts.",
+                "Use an appropriate registered fungicide when recommended."
+            ],
+            "warning": "Follow the product label and local agricultural advice."
+        },
+        "Healthy": {
+            "symptoms": "No obvious disease symptoms detected in the uploaded image.",
+            "prevention": [
+                "Continue regular crop monitoring.",
+                "Use healthy planting material.",
+                "Maintain proper irrigation and nutrition.",
+                "Keep the field clean and well ventilated."
+            ],
+            "treatment": [
+                "No disease treatment is required when the crop is healthy."
+            ],
+            "warning": "Image-based detection is not a substitute for field inspection."
+        }
+    },
+    "Corn_(maize)": {
+        "Cercospora leaf spot Gray leaf spot": {
+            "symptoms": "Gray to tan rectangular lesions can develop on maize leaves.",
+            "prevention": [
+                "Use resistant or tolerant varieties where available.",
+                "Maintain crop rotation.",
+                "Manage crop residue appropriately.",
+                "Avoid prolonged leaf wetness where possible."
+            ],
+            "treatment": [
+                "Monitor fields regularly.",
+                "Use locally recommended fungicides when economically justified."
+            ],
+            "warning": "Fungicide decisions should consider disease severity and local recommendations."
+        },
+        "Common rust": {
+            "symptoms": "Small reddish-brown rust-colored pustules may develop on maize leaves.",
+            "prevention": [
+                "Use resistant varieties where available.",
+                "Maintain good field management.",
+                "Scout fields regularly."
+            ],
+            "treatment": [
+                "Early detection is important.",
+                "Use a registered fungicide if recommended for the crop and disease."
+            ],
+            "warning": "Follow local agricultural recommendations before spraying."
+        },
+        "Northern Leaf Blight": {
+            "symptoms": "Long gray-green to tan lesions can develop on maize leaves.",
+            "prevention": [
+                "Use resistant varieties where available.",
+                "Practice crop rotation.",
+                "Manage infected crop residues.",
+                "Maintain balanced crop nutrition."
+            ],
+            "treatment": [
+                "Monitor disease development.",
+                "Use an appropriate registered fungicide when recommended."
+            ],
+            "warning": "Follow the pesticide label and local agricultural guidance."
+        },
+        "Healthy": {
+            "symptoms": "No obvious disease symptoms detected in the uploaded image.",
+            "prevention": [
+                "Continue regular crop monitoring.",
+                "Use healthy planting material.",
+                "Maintain proper irrigation and nutrition.",
+                "Keep the field clean and well ventilated."
+            ],
+            "treatment": [
+                "No disease treatment is required when the crop is healthy."
+            ],
+            "warning": "Image-based detection is not a substitute for field inspection."
+        }
+    },
+    "Grape": {
+        "Black rot": {
+            "symptoms": "Brown circular lesions can develop on leaves and dark shriveled lesions can develop on berries.",
+            "prevention": [
+                "Remove infected berries and plant debris.",
+                "Maintain good canopy ventilation.",
+                "Prune overcrowded growth.",
+                "Avoid prolonged moisture on foliage."
+            ],
+            "treatment": [
+                "Remove infected plant material.",
+                "Use an appropriate registered fungicide when recommended."
+            ],
+            "warning": "Use only grape-approved products and follow the label."
+        },
+        "Esca (Black Measles)": {
+            "symptoms": "Leaves may develop characteristic discoloration and berries may show dark spots or abnormal ripening.",
+            "prevention": [
+                "Use healthy planting material.",
+                "Avoid unnecessary pruning injuries.",
+                "Disinfect pruning tools when appropriate.",
+                "Remove severely affected wood."
+            ],
+            "treatment": [
+                "Remove severely diseased wood where practical.",
+                "Maintain vineyard sanitation.",
+                "Seek local expert advice for severe infections."
+            ],
+            "warning": "There is no universal cure; management depends on disease severity and local recommendations."
+        },
+        "Leaf blight (Isariopsis Leaf Spot)": {
+            "symptoms": "Dark leaf spots may enlarge and cause affected leaves to dry or drop.",
+            "prevention": [
+                "Improve canopy ventilation.",
+                "Remove infected plant debris.",
+                "Avoid prolonged leaf wetness.",
+                "Maintain vineyard sanitation."
+            ],
+            "treatment": [
+                "Remove severely infected leaves.",
+                "Use a registered fungicide if locally recommended."
+            ],
+            "warning": "Follow the product label."
+        },
+        "Healthy": {
+            "symptoms": "No obvious disease symptoms detected in the uploaded image.",
+            "prevention": [
+                "Continue regular crop monitoring.",
+                "Use healthy planting material.",
+                "Maintain proper irrigation and nutrition.",
+                "Keep the field clean and well ventilated."
+            ],
+            "treatment": [
+                "No disease treatment is required when the crop is healthy."
+            ],
+            "warning": "Image-based detection is not a substitute for field inspection."
+        }
+    },
+    "Orange": {
+        "Haunglongbing (Citrus greening)": {
+            "symptoms": "Leaves may show uneven yellowing or mottling. Fruits can remain small, poorly colored and develop abnormal taste.",
+            "prevention": [
+                "Use certified disease-free planting material.",
+                "Monitor and manage psyllid vectors.",
+                "Remove severely affected trees where recommended.",
+                "Regularly inspect orchards for symptoms."
+            ],
+            "treatment": [
+                "There is currently no reliable cure that restores an infected citrus tree to health.",
+                "Control the insect vector according to local integrated pest-management recommendations.",
+                "Remove infected trees when advised by agricultural authorities."
+            ],
+            "warning": "Do not claim that a pesticide or home remedy cures an infected tree."
+        }
+    },
+    "Peach": {
+        "Bacterial spot": {
+            "symptoms": "Small dark spots can develop on leaves and fruit. Severe infection may cause leaf drop and fruit lesions.",
+            "prevention": [
+                "Use suitable resistant or tolerant varieties where available.",
+                "Maintain good orchard sanitation.",
+                "Avoid unnecessary plant injury.",
+                "Improve air circulation."
+            ],
+            "treatment": [
+                "Remove severely affected plant material where practical.",
+                "Use locally recommended bactericides or other registered products when appropriate."
+            ],
+            "warning": "Follow local recommendations and product labels."
+        },
+        "Healthy": {
+            "symptoms": "No obvious disease symptoms detected in the uploaded image.",
+            "prevention": [
+                "Continue regular crop monitoring.",
+                "Use healthy planting material.",
+                "Maintain proper irrigation and nutrition.",
+                "Keep the field clean and well ventilated."
+            ],
+            "treatment": [
+                "No disease treatment is required when the crop is healthy."
+            ],
+            "warning": "Image-based detection is not a substitute for field inspection."
+        }
+    },
+    "Pepper,_bell": {
+        "Bacterial spot": {
+            "symptoms": "Small dark water-soaked spots can appear on leaves and fruit.",
+            "prevention": [
+                "Use certified disease-free seed or planting material.",
+                "Avoid overhead irrigation when possible.",
+                "Rotate crops.",
+                "Remove infected plant debris."
+            ],
+            "treatment": [
+                "Remove severely affected leaves and fruit.",
+                "Use registered bactericides when recommended locally."
+            ],
+            "warning": "Use only products registered for the crop."
+        },
+        "Healthy": {
+            "symptoms": "No obvious disease symptoms detected in the uploaded image.",
+            "prevention": [
+                "Continue regular crop monitoring.",
+                "Use healthy planting material.",
+                "Maintain proper irrigation and nutrition.",
+                "Keep the field clean and well ventilated."
+            ],
+            "treatment": [
+                "No disease treatment is required when the crop is healthy."
+            ],
+            "warning": "Image-based detection is not a substitute for field inspection."
+        }
+    },
+    "Potato": {
+        "Early blight": {
+            "symptoms": "Brown circular lesions with concentric rings may appear on older leaves.",
+            "prevention": [
+                "Practice crop rotation.",
+                "Remove infected crop debris.",
+                "Maintain balanced plant nutrition.",
+                "Avoid prolonged leaf wetness."
+            ],
+            "treatment": [
+                "Remove severely infected plant material where practical.",
+                "Use a registered fungicide when recommended."
+            ],
+            "warning": "Follow local pesticide recommendations."
+        },
+        "Late blight": {
+            "symptoms": "Water-soaked dark lesions can rapidly develop on leaves and stems, especially under cool and wet conditions.",
+            "prevention": [
+                "Use certified disease-free seed tubers.",
+                "Plant resistant or tolerant varieties where available.",
+                "Avoid prolonged leaf wetness.",
+                "Scout fields frequently."
+            ],
+            "treatment": [
+                "Act quickly after detection.",
+                "Remove or manage infected material appropriately.",
+                "Use locally recommended fungicides according to label instructions."
+            ],
+            "warning": "Late blight can spread rapidly. Consult local agricultural experts when infection is severe."
+        },
+        "Healthy": {
+            "symptoms": "No obvious disease symptoms detected in the uploaded image.",
+            "prevention": [
+                "Continue regular crop monitoring.",
+                "Use healthy planting material.",
+                "Maintain proper irrigation and nutrition.",
+                "Keep the field clean and well ventilated."
+            ],
+            "treatment": [
+                "No disease treatment is required when the crop is healthy."
+            ],
+            "warning": "Image-based detection is not a substitute for field inspection."
+        }
+    },
+    "Squash": {
+        "Powdery mildew": {
+            "symptoms": "White powder-like growth appears on leaves and may spread across the leaf surface.",
+            "prevention": [
+                "Maintain good air circulation.",
+                "Avoid excessive nitrogen.",
+                "Use resistant varieties where available.",
+                "Monitor plants regularly."
+            ],
+            "treatment": [
+                "Remove severely affected leaves.",
+                "Use a registered fungicide when locally recommended."
+            ],
+            "warning": "Follow product label instructions."
+        }
+    },
+    "Strawberry": {
+        "Leaf scorch": {
+            "symptoms": "Dark purple, reddish or brown lesions can develop on leaves and may cause affected areas to dry.",
+            "prevention": [
+                "Maintain good field sanitation.",
+                "Avoid excessive leaf wetness.",
+                "Provide good air circulation.",
+                "Remove heavily infected leaves."
+            ],
+            "treatment": [
+                "Remove severely affected leaves.",
+                "Use an appropriate registered fungicide when recommended locally."
+            ],
+            "warning": "Confirm the diagnosis before applying pesticides."
+        },
+        "Healthy": {
+            "symptoms": "No obvious disease symptoms detected in the uploaded image.",
+            "prevention": [
+                "Continue regular crop monitoring.",
+                "Use healthy planting material.",
+                "Maintain proper irrigation and nutrition.",
+                "Keep the field clean and well ventilated."
+            ],
+            "treatment": [
+                "No disease treatment is required when the crop is healthy."
+            ],
+            "warning": "Image-based detection is not a substitute for field inspection."
+        }
+    },
+    "Tomato": {
+        "Bacterial spot": {
+            "symptoms": "Small dark spots can occur on leaves, stems and fruit.",
+            "prevention": [
+                "Use disease-free seed and seedlings.",
+                "Avoid overhead irrigation.",
+                "Remove infected plant debris.",
+                "Rotate crops."
+            ],
+            "treatment": [
+                "Remove severely infected plant material.",
+                "Use locally recommended bactericides when appropriate."
+            ],
+            "warning": "Follow local product labels."
+        },
+        "Early blight": {
+            "symptoms": "Dark lesions with concentric rings commonly develop on older leaves.",
+            "prevention": [
+                "Practice crop rotation.",
+                "Remove infected crop debris.",
+                "Avoid prolonged leaf wetness.",
+                "Maintain balanced nutrition."
+            ],
+            "treatment": [
+                "Remove severely infected leaves.",
+                "Use a registered fungicide when recommended."
+            ],
+            "warning": "Confirm disease before spraying."
+        },
+        "Late blight": {
+            "symptoms": "Dark water-soaked lesions can rapidly spread across leaves and stems.",
+            "prevention": [
+                "Use healthy seedlings.",
+                "Provide good air circulation.",
+                "Avoid prolonged leaf wetness.",
+                "Scout crops frequently."
+            ],
+            "treatment": [
+                "Remove severely infected material.",
+                "Use locally recommended fungicides promptly when appropriate."
+            ],
+            "warning": "Late blight can spread rapidly. Seek expert advice for severe outbreaks."
+        },
+        "Leaf Mold": {
+            "symptoms": "Yellowish patches may appear on the upper leaf surface with olive-green to brown fungal growth underneath.",
+            "prevention": [
+                "Improve greenhouse ventilation.",
+                "Reduce excessive humidity.",
+                "Avoid prolonged leaf wetness.",
+                "Remove infected leaves."
+            ],
+            "treatment": [
+                "Remove severely affected leaves.",
+                "Use a registered fungicide when recommended."
+            ],
+            "warning": "Ventilation and humidity management are important."
+        },
+        "Septoria leaf spot": {
+            "symptoms": "Small circular leaf spots with dark margins can develop, often starting on older leaves.",
+            "prevention": [
+                "Remove infected leaves and crop debris.",
+                "Avoid overhead irrigation.",
+                "Practice crop rotation.",
+                "Maintain good airflow."
+            ],
+            "treatment": [
+                "Remove severely infected leaves.",
+                "Use a locally recommended fungicide when appropriate."
+            ],
+            "warning": "Follow local pesticide recommendations."
+        },
+        "Spider mites Two-spotted spider mite": {
+            "symptoms": "Fine stippling, yellowing and webbing can appear on leaves.",
+            "prevention": [
+                "Monitor the underside of leaves regularly.",
+                "Maintain adequate plant hydration.",
+                "Encourage beneficial predatory mites and insects where appropriate.",
+                "Avoid unnecessary broad-spectrum pesticide use."
+            ],
+            "treatment": [
+                "Use appropriate integrated pest-management measures.",
+                "Use a registered miticide only when necessary and according to the label."
+            ],
+            "warning": "Spider mites are pests, not fungal diseases. Do not use fungicides for them."
+        },
+        "Target Spot": {
+            "symptoms": "Dark circular lesions can develop on leaves and may show concentric patterns.",
+            "prevention": [
+                "Remove infected crop debris.",
+                "Improve airflow.",
+                "Avoid prolonged leaf wetness.",
+                "Practice crop rotation."
+            ],
+            "treatment": [
+                "Remove severely infected leaves.",
+                "Use a registered fungicide when locally recommended."
+            ],
+            "warning": "Confirm diagnosis before chemical treatment."
+        },
+        "Tomato Yellow Leaf Curl Virus": {
+            "symptoms": "Leaves may curl upward, become yellow and plants may show stunted growth.",
+            "prevention": [
+                "Use healthy seedlings.",
+                "Control whitefly vectors through integrated pest management.",
+                "Remove infected plants when recommended.",
+                "Control weeds that may harbor vectors."
+            ],
+            "treatment": [
+                "There is no direct cure for an infected plant.",
+                "Manage whitefly vectors.",
+                "Remove severely infected plants when recommended."
+            ],
+            "warning": "Do not claim that fungicides cure viral diseases."
+        },
+        "Tomato mosaic virus": {
+            "symptoms": "Leaves may develop mosaic patterns, mottling and distortion. Plant growth can be reduced.",
+            "prevention": [
+                "Use certified disease-free seed.",
+                "Disinfect tools.",
+                "Wash hands before handling plants.",
+                "Remove infected plants and debris."
+            ],
+            "treatment": [
+                "There is no direct cure for an infected plant.",
+                "Remove severely infected plants.",
+                "Maintain strict sanitation."
+            ],
+            "warning": "Viral diseases cannot be cured with ordinary fungicides."
+        },
+        "Healthy": {
+            "symptoms": "No obvious disease symptoms detected in the uploaded image.",
+            "prevention": [
+                "Continue regular crop monitoring.",
+                "Use healthy planting material.",
+                "Maintain proper irrigation and nutrition.",
+                "Keep the field clean and well ventilated."
+            ],
+            "treatment": [
+                "No disease treatment is required when the crop is healthy."
+            ],
+            "warning": "Image-based detection is not a substitute for field inspection."
+        }
+    },
+    "Blueberry": {
+        "Healthy": {
+            "symptoms": "No obvious disease symptoms detected in the uploaded image.",
+            "prevention": [
+                "Continue regular crop monitoring.",
+                "Use healthy planting material.",
+                "Maintain proper irrigation and nutrition.",
+                "Keep the field clean and well ventilated."
+            ],
+            "treatment": [
+                "No disease treatment is required when the crop is healthy."
+            ],
+            "warning": "Image-based detection is not a substitute for field inspection."
+        }
+    },
+    "Raspberry": {
+        "Healthy": {
+            "symptoms": "No obvious disease symptoms detected in the uploaded image.",
+            "prevention": [
+                "Continue regular crop monitoring.",
+                "Use healthy planting material.",
+                "Maintain proper irrigation and nutrition.",
+                "Keep the field clean and well ventilated."
+            ],
+            "treatment": [
+                "No disease treatment is required when the crop is healthy."
+            ],
+            "warning": "Image-based detection is not a substitute for field inspection."
+        }
+    },
+    "Soybean": {
+        "Healthy": {
+            "symptoms": "No obvious disease symptoms detected in the uploaded image.",
+            "prevention": [
+                "Continue regular crop monitoring.",
+                "Use healthy planting material.",
+                "Maintain proper irrigation and nutrition.",
+                "Keep the field clean and well ventilated."
+            ],
+            "treatment": [
+                "No disease treatment is required when the crop is healthy."
+            ],
+            "warning": "Image-based detection is not a substitute for field inspection."
+        }
+    }
+}

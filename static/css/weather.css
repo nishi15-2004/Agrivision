@@ -1,0 +1,804 @@
+/* ===================================================
+                AGRIMITRA WEATHER CSS
+=================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+
+    min-height:100vh;
+
+    background:linear-gradient(135deg,#87CEEB,#dff6ff);
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+    transition:.5s;
+
+}
+
+
+/* ==========================
+        MAIN CONTAINER
+========================== */
+
+.weather-dashboard{
+
+    width:92%;
+
+    max-width:1400px;
+
+    margin:35px auto;
+
+}
+
+
+/* ==========================
+        TOP BAR
+========================== */
+
+.top-bar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:35px;
+
+}
+
+
+.title-box h1{
+
+    color:#fff;
+
+    font-size:38px;
+
+    font-weight:700;
+
+    text-shadow:2px 2px 10px rgba(0,0,0,.25);
+
+}
+
+
+.title-box p{
+
+    color:white;
+
+    opacity:.9;
+
+    margin-top:8px;
+
+}
+
+
+/* ==========================
+        SEARCH BAR
+========================== */
+
+.search-box{
+
+    display:flex;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+
+}
+
+
+.search-box input{
+
+    width:280px;
+
+    padding:14px 18px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:14px;
+
+    background:rgba(255,255,255,.85);
+
+    font-size:15px;
+
+}
+
+
+.search-box button{
+
+    padding:14px 22px;
+
+    border:none;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    background:#2e7d32;
+
+    color:white;
+
+    font-size:15px;
+
+    transition:.3s;
+
+}
+
+
+.search-box button:hover{
+
+    background:#1b5e20;
+
+    transform:translateY(-3px);
+
+}
+
+
+/* ==========================
+        ERROR BOX
+========================== */
+
+.error-box{
+
+    background:#ffebee;
+
+    color:#c62828;
+
+    padding:15px;
+
+    border-radius:15px;
+
+    text-align:center;
+
+    margin-bottom:25px;
+
+    font-weight:600;
+
+}
+
+
+/* ==========================
+        MAIN GRID
+========================== */
+
+.main-grid{
+
+    display:grid;
+
+    grid-template-columns:340px 1fr;
+
+    gap:25px;
+
+    align-items:start;
+
+}
+
+
+/* ==========================
+        WEATHER CARD
+========================== */
+
+.weather-card{
+
+    background:rgba(255,255,255,.20);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:28px;
+
+    padding:35px;
+
+    text-align:center;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.18);
+
+}
+
+
+.weather-card img{
+
+    width:170px;
+
+    height:170px;
+
+    object-fit:contain;
+
+}
+
+
+.weather-card h1{
+
+    color:white;
+
+    font-size:70px;
+
+    margin-top:10px;
+
+}
+
+
+.weather-card h2{
+
+    color:white;
+
+    margin:12px 0;
+
+    font-weight:600;
+
+}
+
+
+.weather-card h3{
+
+    color:white;
+
+    opacity:.9;
+
+}
+
+
+/* ==========================
+        MAX / MIN
+========================== */
+
+.temp-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    margin-top:25px;
+
+}
+
+
+.mini-temp{
+
+    flex:1;
+
+    background:rgba(255,255,255,.15);
+
+    border-radius:16px;
+
+    padding:15px;
+
+    color:white;
+
+}
+
+
+.mini-temp span{
+
+    font-size:14px;
+
+    opacity:.9;
+
+}
+
+
+.mini-temp h4{
+
+    margin-top:8px;
+
+    font-size:22px;
+
+}
+/* ===================================================
+                RIGHT SIDE INFO GRID
+=================================================== */
+
+.info-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:20px;
+
+}
+
+
+.info-card{
+
+    background:rgba(255,255,255,.18);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:24px;
+
+    padding:25px;
+
+    text-align:center;
+
+    color:white;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+    transition:.3s;
+
+}
+
+
+.info-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 18px 35px rgba(0,0,0,.20);
+
+}
+
+
+.info-card .icon{
+
+    font-size:42px;
+
+    margin-bottom:15px;
+
+}
+
+
+.info-card h3{
+
+    font-size:18px;
+
+    margin-bottom:10px;
+
+    font-weight:600;
+
+}
+
+
+.info-card p{
+
+    font-size:26px;
+
+    font-weight:700;
+
+}
+
+
+/* ===================================================
+                FARMER ADVISORY
+=================================================== */
+
+.advisory-section{
+
+    margin-top:35px;
+
+}
+
+
+.advisory-card{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:25px;
+
+    background:linear-gradient(135deg,#2e7d32,#4caf50);
+
+    color:white;
+
+    padding:30px;
+
+    border-radius:28px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.18);
+
+}
+
+
+.advisory-icon{
+
+    width:90px;
+
+    height:90px;
+
+    border-radius:50%;
+
+    background:white;
+
+    color:#2e7d32;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:46px;
+
+    flex-shrink:0;
+
+}
+
+
+.advisory-text{
+
+    flex:1;
+
+}
+
+
+.advisory-text h2{
+
+    margin-bottom:10px;
+
+    font-size:28px;
+
+}
+
+
+.advisory-text p{
+
+    font-size:18px;
+
+    line-height:1.7;
+
+}
+
+
+/* ===================================================
+                FORECAST
+=================================================== */
+
+.forecast-title{
+
+    margin:45px 0 25px;
+
+    text-align:center;
+
+    color:white;
+
+    font-size:34px;
+
+    text-shadow:2px 2px 8px rgba(0,0,0,.25);
+
+}
+
+
+.forecast-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+
+    gap:22px;
+
+}
+
+
+.forecast-card{
+
+    background:rgba(255,255,255,.18);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:24px;
+
+    padding:25px;
+
+    text-align:center;
+
+    color:white;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+    transition:.3s;
+
+}
+
+
+.forecast-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+
+.forecast-card img{
+
+    width:85px;
+
+    height:85px;
+
+    object-fit:contain;
+
+}
+
+
+.forecast-card h3{
+
+    margin-bottom:12px;
+
+    font-size:20px;
+
+}
+
+
+.forecast-card h2{
+
+    margin:10px 0;
+
+    font-size:30px;
+
+}
+
+
+.forecast-card p{
+
+    font-size:16px;
+
+    margin-bottom:12px;
+
+}
+
+
+.forecast-info{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-top:10px;
+
+    padding-top:10px;
+
+    border-top:1px solid rgba(255,255,255,.25);
+
+    font-size:15px;
+
+    font-weight:600;
+
+}
+
+
+/* ===================================================
+                FOOTER
+=================================================== */
+
+.weather-footer{
+
+    margin-top:60px;
+
+    text-align:center;
+
+    color:white;
+
+    padding:25px 0;
+
+}
+
+
+.weather-footer h2{
+
+    margin-bottom:10px;
+
+    font-size:28px;
+
+}
+
+
+.weather-footer p{
+
+    margin-top:6px;
+
+    opacity:.9;
+
+}
+/* ===================================================
+                WEATHER THEMES
+=================================================== */
+
+body.clear{
+
+    background:
+    linear-gradient(rgba(255,255,255,.15),rgba(255,255,255,.15)),
+    url("../images/sunny.jpg");
+
+    background-size:cover;
+    background-position:center;
+}
+
+body.clouds{
+
+    background:
+    linear-gradient(rgba(255,255,255,.20),rgba(255,255,255,.20)),
+    url("../images/cloudy.jpg");
+
+    background-size:cover;
+    background-position:center;
+}
+
+body.rain,
+body.drizzle{
+
+    background:
+    linear-gradient(rgba(0,0,0,.20),rgba(0,0,0,.20)),
+    url("../images/rain.jpg");
+
+    background-size:cover;
+    background-position:center;
+}
+
+body.thunderstorm{
+
+    background:
+    linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.35)),
+    url("../images/storm.jpg");
+
+    background-size:cover;
+    background-position:center;
+}
+
+body.mist,
+body.haze,
+body.fog{
+
+    background:
+    linear-gradient(rgba(255,255,255,.25),rgba(255,255,255,.25)),
+    url("../images/fog.jpg");
+
+    background-size:cover;
+    background-position:center;
+}
+
+body.night{
+
+    background:
+    linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
+    url("../images/night.jpg");
+
+    background-size:cover;
+    background-position:center;
+}
+
+/* ===================================================
+                ANIMATIONS
+=================================================== */
+
+@keyframes float{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+
+}
+
+.weather-card img{
+
+    animation:float 3s ease-in-out infinite;
+
+}
+
+/* ===================================================
+                RESPONSIVE
+=================================================== */
+
+@media(max-width:1100px){
+
+    .main-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .info-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .top-bar{
+
+        flex-direction:column;
+        align-items:flex-start;
+
+    }
+
+    .search-box{
+
+        width:100%;
+
+    }
+
+    .search-box input{
+
+        width:100%;
+
+    }
+
+    .info-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .forecast-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .weather-card h1{
+
+        font-size:58px;
+
+    }
+
+    .advisory-card{
+
+        flex-direction:column;
+        text-align:center;
+
+    }
+
+}
+
+@media(max-width:500px){
+
+    .forecast-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .weather-card img{
+
+        width:130px;
+        height:130px;
+
+    }
+
+    .weather-card h1{
+
+        font-size:48px;
+
+    }
+
+    .title-box h1{
+
+        font-size:28px;
+
+    }
+
+    .info-card p{
+
+        font-size:22px;
+
+    }
+
+}

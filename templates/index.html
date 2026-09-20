@@ -1,0 +1,600 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Agrivision</title>
+
+    <!-- Main CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Language System -->
+    <script src="{{ url_for('static', filename='js/language.js') }}"
+            defer></script>
+</head>
+
+<body>
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header>
+
+    <h1 data-i18n="brand_name">
+        🌾 Agrivision
+    </h1>
+
+    <h1 data-i18n="home_title">
+        Smart Agriculture Support System
+    </h1>
+
+</header>
+
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<nav>
+
+    <a id="home"
+       href="{{ url_for('home') }}"
+       data-i18n="nav_home">
+        Home
+    </a>
+
+    <a id="weather"
+       href="{{ url_for('weather') }}"
+       data-i18n="nav_weather">
+        Weather
+    </a>
+
+    <a id="disease"
+       href="{{ url_for('disease') }}"
+       data-i18n="nav_disease">
+        Disease Detection
+    </a>
+
+    <a id="schemes"
+       href="{{ url_for('schemes') }}"
+       data-i18n="nav_schemes">
+        Government Schemes
+    </a>
+
+    <a id="compensation"
+       href="{{ url_for('compensation') }}"
+       data-i18n="nav_compensation">
+        Compensation
+    </a>
+
+    <a id="market"
+       href="{{ url_for('market') }}"
+       data-i18n="nav_market">
+        Market Prices
+    </a>
+
+    <a id="help"
+       href="{{ url_for('help') }}"
+       data-i18n="nav_help">
+        Help
+    </a>
+
+
+    <!-- Database se 23 languages -->
+    <select id="languageSelect"
+            aria-label="Select Language">
+
+        <!-- JavaScript database se options add karega -->
+
+    </select>
+
+</nav>
+
+
+<!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
+
+<main>
+
+
+    <!-- =================================================
+         HERO SECTION
+    ================================================== -->
+
+    <section class="hero">
+
+        <h2 id="welcome"
+            data-i18n="welcome">
+
+            Welcome Farmers 👨‍🌾
+
+        </h2>
+
+
+        <p id="description"
+           data-i18n="hero_description">
+
+            Get weather updates, crop disease detection,
+            government schemes and compensation information
+            in one place.
+
+        </p>
+
+
+        <button id="explore"
+                data-i18n="explore_now">
+
+            Explore Now
+
+        </button>
+
+    </section>
+
+
+
+    <!-- =================================================
+         SERVICES SECTION
+    ================================================== -->
+
+    <section class="features">
+
+        <h2 data-i18n="our_services">
+            Our Services
+        </h2>
+
+
+        <div class="feature-container">
+
+
+            <!-- WEATHER -->
+
+            <a href="{{ url_for('weather') }}"
+               class="feature-link">
+
+                <div class="card">
+
+                    <div class="icon">
+                        🌦
+                    </div>
+
+                    <h3 data-i18n="weather">
+                        Weather Updates
+                    </h3>
+
+                    <p data-i18n="weather_description">
+                        Get real-time weather forecasts
+                        for better farming decisions.
+                    </p>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- DISEASE -->
+
+            <a href="{{ url_for('disease') }}"
+               class="feature-link">
+
+                <div class="card">
+
+                    <div class="icon">
+                        🌿
+                    </div>
+
+                    <h3 data-i18n="disease_detection">
+                        Disease Detection
+                    </h3>
+
+                    <p data-i18n="disease_description">
+                        Upload crop images and identify
+                        diseases quickly.
+                    </p>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- GOVERNMENT SCHEMES -->
+
+            <a href="{{ url_for('schemes') }}"
+               class="feature-link">
+
+                <div class="card">
+
+                    <div class="icon">
+                        🏛
+                    </div>
+
+                    <h3 data-i18n="government_schemes">
+                        Government Schemes
+                    </h3>
+
+                    <p data-i18n="schemes_description">
+                        Discover the latest schemes and
+                        subsidies available for farmers.
+                    </p>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- COMPENSATION -->
+
+            <a href="{{ url_for('compensation') }}"
+               class="feature-link">
+
+                <div class="card">
+
+                    <div class="icon">
+                        💰
+                    </div>
+
+                    <h3 data-i18n="compensation">
+                        Compensation
+                    </h3>
+
+                    <p data-i18n="compensation_description">
+                        Check crop damage compensation
+                        and insurance support.
+                    </p>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- MARKET -->
+
+            <a href="{{ url_for('market') }}"
+               class="feature-link">
+
+                <div class="card">
+
+                    <div class="icon">
+                        📈
+                    </div>
+
+                    <h3 data-i18n="market_prices">
+                        Market Prices
+                    </h3>
+
+                    <p data-i18n="market_description">
+                        Stay updated with daily mandi prices.
+                    </p>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- HELP -->
+
+            <a href="{{ url_for('help') }}"
+               class="feature-link">
+
+                <div class="card">
+
+                    <div class="icon">
+                        📞
+                    </div>
+
+                    <h3 data-i18n="help">
+                        Farmer Help
+                    </h3>
+
+                    <p data-i18n="help_description">
+                        Get support through FAQs and
+                        emergency contact information.
+                    </p>
+
+                </div>
+
+            </a>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         WHY CHOOSE AGRIVISION
+    ================================================== -->
+
+    <section class="why-us">
+
+        <h2 data-i18n="why_choose">
+            Why Choose Agrivision?
+        </h2>
+
+
+        <div class="why-container">
+
+
+            <!-- LIVE WEATHER -->
+
+            <div class="why-box">
+
+                <div class="why-icon">
+                    🌦
+                </div>
+
+                <h3 data-i18n="live_weather">
+                    Live Weather
+                </h3>
+
+                <p data-i18n="live_weather_description">
+                    Accurate weather updates to help
+                    farmers plan irrigation and harvesting.
+                </p>
+
+            </div>
+
+
+
+            <!-- SMART DETECTION -->
+
+            <div class="why-box">
+
+                <div class="why-icon">
+                    🌱
+                </div>
+
+                <h3 data-i18n="smart_detection">
+                    Smart Detection
+                </h3>
+
+                <p data-i18n="smart_detection_description">
+                    Identify crop diseases quickly
+                    using image-based detection.
+                </p>
+
+            </div>
+
+
+
+            <!-- GOVERNMENT SUPPORT -->
+
+            <div class="why-box">
+
+                <div class="why-icon">
+                    🏛
+                </div>
+
+                <h3 data-i18n="government_support">
+                    Government Support
+                </h3>
+
+                <p data-i18n="government_support_description">
+                    Access all important schemes and
+                    compensation information in one place.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         IMPACT / STATISTICS
+    ================================================== -->
+
+    <section class="stats">
+
+        <h2 data-i18n="agrivision_impact">
+            Agrivision Impact
+        </h2>
+
+
+        <div class="stats-container">
+
+
+            <div class="stat-box">
+
+                <h3>
+                    10,000+
+                </h3>
+
+                <p data-i18n="farmers_helped">
+                    Farmers Helped
+                </p>
+
+            </div>
+
+
+
+            <div class="stat-box">
+
+                <h3>
+                    200+
+                </h3>
+
+                <p data-i18n="crop_varieties">
+                    Crop Varieties
+                </p>
+
+            </div>
+
+
+
+            <div class="stat-box">
+
+                <h3>
+                    100+
+                </h3>
+
+                <p data-i18n="districts_covered">
+                    Districts Covered
+                </p>
+
+            </div>
+
+
+
+            <div class="stat-box">
+
+                <h3>
+                    50+
+                </h3>
+
+                <p data-i18n="government_schemes">
+                    Government Schemes
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         FARMING TIPS
+    ================================================== -->
+
+    <section class="tips">
+
+        <h2 data-i18n="latest_farming_tips">
+            Latest Farming Tips
+        </h2>
+
+
+        <div class="tips-container">
+
+
+            <!-- SMART IRRIGATION -->
+
+            <div class="tip-card">
+
+                <h3 data-i18n="smart_irrigation">
+                    💧 Smart Irrigation
+                </h3>
+
+                <p data-i18n="smart_irrigation_description">
+                    Water crops early in the morning
+                    or evening to reduce evaporation
+                    and save water.
+                </p>
+
+            </div>
+
+
+
+            <!-- HEALTHY SOIL -->
+
+            <div class="tip-card">
+
+                <h3 data-i18n="healthy_soil">
+                    🌱 Healthy Soil
+                </h3>
+
+                <p data-i18n="healthy_soil_description">
+                    Use organic compost and rotate crops
+                    regularly to improve soil fertility.
+                </p>
+
+            </div>
+
+
+
+            <!-- PEST MANAGEMENT -->
+
+            <div class="tip-card">
+
+                <h3 data-i18n="pest_management">
+                    🐛 Pest Management
+                </h3>
+
+                <p data-i18n="pest_management_description">
+                    Inspect crops weekly and use
+                    eco-friendly pesticides whenever possible.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="footer-content">
+
+
+        <h2 data-i18n="brand_name">
+            🌾 Agrivision
+        </h2>
+
+
+        <p data-i18n="footer_description">
+            Smart Agriculture Support System
+            for Indian Farmers.
+        </p>
+
+
+        <p>
+            📧 <span data-i18n="email_label">
+                agrivision@gmail.com
+            </span>
+        </p>
+
+
+        <p>
+            📞 <span data-i18n="phone_label">
+                +91 9876543210
+            </span>
+        </p>
+
+
+        <p data-i18n="copyright">
+            © 2026 Agrivision. All Rights Reserved.
+        </p>
+
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     MAIN JAVASCRIPT
+===================================================== -->
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+
+</html>
+```

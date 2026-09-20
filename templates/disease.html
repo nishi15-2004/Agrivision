@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AgriMitra Disease Detection</title>
+<script src="{{ url_for('static', filename='js/language.js') }}"></script>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/disease.css') }}">
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+</head>
+
+
+<body>
+
+
+<div class="disease-container">
+
+
+    <!-- ==========================
+            HEADER
+    =========================== -->
+
+
+    <header class="disease-header">
+
+
+        <h1>
+            🌿 Crop Disease Detection
+        </h1>
+
+
+        <p>
+            Upload your crop leaf image and get instant disease information
+        </p>
+
+
+    </header>
+
+
+
+    <!-- ==========================
+            UPLOAD SECTION
+    =========================== -->
+
+
+    <section class="upload-card">
+
+
+        <div class="upload-icon">
+
+            📸
+
+        </div>
+
+
+        <h2>
+            Upload Leaf Image
+        </h2>
+
+
+        <p>
+            Take a clear photo of the affected leaf
+        </p>
+
+
+
+        <form method="POST"
+              action="/disease"
+              enctype="multipart/form-data">
+
+<div class="crop-select">
+
+    <label for="crop">
+        🌾 Select Crop
+    </label>
+
+    <select name="crop" id="crop" required>
+
+        <option value="">-- Select Crop --</option>
+
+        <option value="wheat">🌾 Wheat</option>
+
+        <option value="tomato">🍅 Tomato</option>
+
+        <option value="potato">🥔 Potato</option>
+
+        <option value="maize">🌽 Maize</option>
+
+    </select>
+
+</div>
+           <input 
+    type="file"
+    name="leaf_image"
+    id="leafImage"
+    accept="image/*"
+    capture="environment"
+    required>
+
+
+           <label for="leafImage" class="upload-btn">
+    📷 Take / Choose Leaf Photo
+</label>
+
+<button type="submit">
+    🔍 Detect Disease
+</button>
+
+
+
+        </form>
+
+
+    </section>
+    
+    <!-- ==========================
+            IMAGE PREVIEW
+    =========================== -->
+
+
+    {% if image_path %}
+
+    <section class="preview-card">
+
+
+        <h2>
+            🖼️ Uploaded Leaf Image
+        </h2>
+
+
+        <img src="{{ image_path }}"
+             alt="Uploaded Leaf">
+
+
+    </section>
+
+
+    {% endif %}
+
+
+
+
+
+    <!-- ==========================
+            RESULT SECTION
+    =========================== -->
+
+
+    {% if result %}
+
+
+    <section class="result-card">
+
+
+        <div class="result-icon">
+
+            🌱
+
+        </div>
+
+
+        <div class="result-content">
+
+
+            <h2>
+                Disease Detection Result
+            </h2>
+
+
+            <h3>
+                {{ result.disease }}
+            </h3>
+
+
+            <p>
+                Confidence:
+                {{ result.confidence }}%
+            </p>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ==========================
+            TREATMENT
+    =========================== -->
+
+
+    <section class="info-section">
+
+
+        <div class="info-box">
+
+
+            <div class="box-icon">
+
+                💊
+
+            </div>
+
+
+            <h2>
+                Treatment
+            </h2>
+
+
+            <p>
+
+                {{ result.treatment }}
+
+            </p>
+
+
+        </div>
+
+
+
+
+        <div class="info-box">
+
+
+            <div class="box-icon">
+
+                🛡️
+
+            </div>
+
+
+            <h2>
+                Prevention Tips
+            </h2>
+
+
+            <p>
+
+                {{ result.prevention }}
+
+            </p>
+
+
+        </div>
+
+
+    </section>
+
+
+    {% endif %}
+    
+    <!-- ==========================
+            FARMER TIPS
+    =========================== -->
+
+
+    <section class="farmer-tips">
+
+
+        <h2>
+            🌾 Smart Farming Tips
+        </h2>
+
+
+        <div class="tips-grid">
+
+
+            <div class="tip-card">
+
+                <span>💧</span>
+
+                <h3>
+                    Proper Watering
+                </h3>
+
+                <p>
+                    Avoid overwatering as it can increase fungal diseases.
+                </p>
+
+            </div>
+
+
+
+            <div class="tip-card">
+
+                <span>🌱</span>
+
+                <h3>
+                    Healthy Soil
+                </h3>
+
+                <p>
+                    Maintain soil nutrients for stronger crop growth.
+                </p>
+
+            </div>
+
+
+
+
+            <div class="tip-card">
+
+                <span>🔍</span>
+
+                <h3>
+                    Regular Checking
+                </h3>
+
+                <p>
+                    Check leaves regularly to detect diseases early.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+
+    <!-- ==========================
+            NOTE
+    =========================== -->
+
+
+    <div class="note-box">
+
+
+        ⚠️ AI detection is for assistance only.
+        Consult an agriculture expert before using pesticides.
+
+
+    </div>
+
+
+
+
+    <!-- ==========================
+            FOOTER
+    =========================== -->
+
+
+    <footer class="disease-footer">
+
+
+        <h2>
+            🌾 Agrivision
+        </h2>
+
+
+        <p>
+            Smart Agriculture Support System
+        </p>
+
+
+    </footer>
+
+
+
+</div>
+
+
+
+<script src="{{ url_for('static', filename='js/disease.js') }}">
+</script>
+
+
+</body>
+
+</html>

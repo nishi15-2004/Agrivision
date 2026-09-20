@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Government Schemes - AgriMitra</title>
+<script src="{{ url_for('static', filename='js/language.js') }}"></script>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/schemes.css') }}">
+</head>
+
+<body>
+
+<div class="schemes-page">
+
+    <!-- HEADER -->
+    <header class="schemes-header">
+
+        <div>
+            <h1>🏛 Government Schemes for Farmers</h1>
+
+            <p>
+                Find verified Central Government agriculture schemes,
+                benefits, eligibility and official application portals.
+            </p>
+        </div>
+
+        <a href="{{ url_for('home') }}" class="home-btn">
+            ← Home
+        </a>
+
+    </header>
+
+
+    <!-- SEARCH -->
+    <section class="search-section">
+
+        <h2>🔎 Find a Scheme</h2>
+
+        <p>
+            Search according to the type of support you need.
+        </p>
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="schemeSearch"
+                placeholder="Search scheme, insurance, loan, market...">
+
+            <select id="schemeCategory">
+
+                <option value="all">All Categories</option>
+                <option value="income">Income Support</option>
+                <option value="insurance">Crop Insurance</option>
+                <option value="market">Market & Mandi</option>
+                <option value="soil">Soil & Agriculture</option>
+                <option value="credit">Credit & Finance</option>
+
+            </select>
+
+        </div>
+
+    </section>
+
+
+    <!-- SCHEMES -->
+    <main class="schemes-container">
+
+
+        <!-- PM KISAN -->
+        <article class="scheme-card"
+                 data-category="income"
+                 data-search="pm kisan income support farmer">
+
+            <div class="scheme-icon">💰</div>
+
+            <span class="scheme-tag">
+                Income Support
+            </span>
+
+            <h2>PM-KISAN Samman Nidhi</h2>
+
+            <p>
+                Income support scheme for eligible landholding
+                farmer families.
+            </p>
+
+            <div class="scheme-info">
+
+                <div>
+                    <strong>💵 Benefit</strong>
+                    <span>₹6,000 per year</span>
+                </div>
+
+                <div>
+                    <strong>👨‍🌾 Eligibility</strong>
+                    <span>
+                        Eligible landholding farmer families
+                        as per scheme guidelines
+                    </span>
+                </div>
+
+                <div>
+                    <strong>🏦 Payment</strong>
+                    <span>
+                        Direct transfer to beneficiary bank account
+                    </span>
+                </div>
+
+            </div>
+
+            <a
+                href="https://pmkisan.gov.in/"
+                target="_blank"
+                class="official-btn">
+
+                🔗 Official PM-KISAN Portal
+
+            </a>
+
+        </article>
+
+
+        <!-- PMFBY -->
+        <article class="scheme-card"
+                 data-category="insurance"
+                 data-search="pmfby crop insurance fasal bima crop loss">
+
+            <div class="scheme-icon">🌾</div>
+
+            <span class="scheme-tag insurance">
+                Crop Insurance
+            </span>
+
+            <h2>Pradhan Mantri Fasal Bima Yojana</h2>
+
+            <p>
+                Government-supported crop insurance scheme
+                for protection against notified crop risks.
+            </p>
+
+            <div class="scheme-info">
+
+                <div>
+                    <strong>🛡️ Support</strong>
+                    <span>Crop insurance coverage</span>
+                </div>
+
+                <div>
+                    <strong>📋 Services</strong>
+                    <span>
+                        Insurance application, policy status
+                        and crop-loss reporting
+                    </span>
+                </div>
+
+                <div>
+                    <strong>📞 Helpline</strong>
+                    <span>Krishi Rakshak Portal: 14447</span>
+                </div>
+
+            </div>
+
+            <a
+                href="https://www.pmfby.gov.in/"
+                target="_blank"
+                class="official-btn">
+
+                🔗 Official PMFBY Portal
+
+            </a>
+
+        </article>
+
+
+        <!-- eNAM -->
+        <article class="scheme-card"
+                 data-category="market"
+                 data-search="enam mandi market agriculture price">
+
+            <div class="scheme-icon">🏪</div>
+
+            <span class="scheme-tag market">
+                Market & Mandi
+            </span>
+
+            <h2>National Agriculture Market (e-NAM)</h2>
+
+            <p>
+                Online agricultural market platform connecting
+                farmers and agricultural markets.
+            </p>
+
+            <div class="scheme-info">
+
+                <div>
+                    <strong>🏪 Purpose</strong>
+                    <span>
+                        Better access to agricultural markets
+                    </span>
+                </div>
+
+                <div>
+                    <strong>📱 Registration</strong>
+                    <span>
+                        Portal, mobile application or mandi registration
+                    </span>
+                </div>
+
+                <div>
+                    <strong>🇮🇳 Coverage</strong>
+                    <span>
+                        Participating agricultural mandis across India
+                    </span>
+                </div>
+
+            </div>
+
+            <a
+                href="https://www.enam.gov.in/"
+                target="_blank"
+                class="official-btn">
+
+                🔗 Official e-NAM Portal
+
+            </a>
+
+        </article>
+
+
+        <!-- SOIL HEALTH -->
+        <article class="scheme-card"
+                 data-category="soil"
+                 data-search="soil health card soil testing fertilizer">
+
+            <div class="scheme-icon">🌱</div>
+
+            <span class="scheme-tag soil">
+                Soil & Agriculture
+            </span>
+
+            <h2>Soil Health Card</h2>
+
+            <p>
+                Helps farmers understand the nutrient status of
+                their soil and make informed fertilizer decisions.
+            </p>
+
+            <div class="scheme-info">
+
+                <div>
+                    <strong>🧪 Purpose</strong>
+                    <span>Soil nutrient assessment</span>
+                </div>
+
+                <div>
+                    <strong>🌱 Benefit</strong>
+                    <span>
+                        Better nutrient and fertilizer management
+                    </span>
+                </div>
+
+                <div>
+                    <strong>📍 Availability</strong>
+                    <span>
+                        Depends on government soil-testing services
+                    </span>
+                </div>
+
+            </div>
+
+            <a
+                href="https://soilhealth.dac.gov.in/"
+                target="_blank"
+                class="official-btn">
+
+                🔗 Official Soil Health Portal
+
+            </a>
+
+        </article>
+
+
+        <!-- KCC -->
+        <article class="scheme-card"
+                 data-category="credit"
+                 data-search="kisan credit card kcc agriculture loan credit">
+
+            <div class="scheme-icon">💳</div>
+
+            <span class="scheme-tag credit">
+                Credit & Finance
+            </span>
+
+            <h2>Kisan Credit Card (KCC)</h2>
+
+            <p>
+                Agricultural credit facility designed to support
+                farmers' cultivation and related requirements.
+            </p>
+
+            <div class="scheme-info">
+
+                <div>
+                    <strong>💳 Support</strong>
+                    <span>Agricultural credit facility</span>
+                </div>
+
+                <div>
+                    <strong>👨‍🌾 Users</strong>
+                    <span>Eligible farmers as per applicable rules</span>
+                </div>
+
+                <div>
+                    <strong>🏦 Application</strong>
+                    <span>
+                        Through participating banks and institutions
+                    </span>
+                </div>
+
+            </div>
+
+            <a
+                href="https://www.agricoop.nic.in/"
+                target="_blank"
+                class="official-btn">
+
+                🔗 Agriculture Ministry Portal
+
+            </a>
+
+        </article>
+
+
+    </main>
+
+
+    <!-- STATE NOTE -->
+    <section class="state-section">
+
+        <h2>🇮🇳 State-wise Availability</h2>
+
+        <p>
+            Scheme implementation, notified crops, insurance areas,
+            application windows, eligibility and additional benefits
+            can vary by State/UT and by season.
+        </p>
+
+        <p>
+            For state-specific information, farmers should verify the
+            latest notification with their State Agriculture Department,
+            district agriculture office or the official scheme portal.
+        </p>
+
+    </section>
+
+
+    <!-- IMPORTANT -->
+    <section class="notice">
+
+        <h2>⚠️ Important Information</h2>
+
+        <p>
+            AgriMitra provides information and links farmers to
+            official government portals. Eligibility, benefits,
+            application dates and implementation rules may change.
+        </p>
+
+        <p>
+            Always verify the latest information on the official
+            government website before applying.
+        </p>
+
+    </section>
+
+
+    <footer>
+
+        <h2>🌾 Agrivision</h2>
+
+        <p>
+            Smart Agriculture Support System for Indian Farmers
+        </p>
+
+        <p>
+            © 2026 Agrivision
+        </p>
+
+    </footer>
+
+</div>
+
+
+<script>
+
+const searchInput = document.getElementById("schemeSearch");
+const categorySelect = document.getElementById("schemeCategory");
+const cards = document.querySelectorAll(".scheme-card");
+
+function filterSchemes() {
+
+    const search =
+        searchInput.value.toLowerCase().trim();
+
+    const category =
+        categorySelect.value;
+
+    cards.forEach(card => {
+
+        const text =
+            card.innerText.toLowerCase();
+
+        const cardCategory =
+            card.dataset.category;
+
+        const matchesSearch =
+            text.includes(search) ||
+            card.dataset.search.includes(search);
+
+        const matchesCategory =
+            category === "all" ||
+            cardCategory === category;
+
+        if (matchesSearch && matchesCategory) {
+
+            card.style.display = "block";
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+}
+
+searchInput.addEventListener("input", filterSchemes);
+
+categorySelect.addEventListener("change", filterSchemes);
+
+</script>
+
+</body>
+</html>

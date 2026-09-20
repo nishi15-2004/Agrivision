@@ -1,0 +1,224 @@
+{
+    "Apple": {
+        "total_images": 3171,
+        "classes": [
+            {
+                "disease": "Apple scab",
+                "images": 630
+            },
+            {
+                "disease": "Black rot",
+                "images": 621
+            },
+            {
+                "disease": "Cedar apple rust",
+                "images": 275
+            },
+            {
+                "disease": "Healthy",
+                "images": 1645
+            }
+        ]
+    },
+    "Blueberry": {
+        "total_images": 1502,
+        "classes": [
+            {
+                "disease": "Healthy",
+                "images": 1502
+            }
+        ]
+    },
+    "Cherry_(including_sour)": {
+        "total_images": 1906,
+        "classes": [
+            {
+                "disease": "Powdery mildew",
+                "images": 1052
+            },
+            {
+                "disease": "healthy",
+                "images": 854
+            }
+        ]
+    },
+    "Corn_(maize)": {
+        "total_images": 3852,
+        "classes": [
+            {
+                "disease": "Cercospora leaf spot Gray leaf spot",
+                "images": 513
+            },
+            {
+                "disease": "Common rust",
+                "images": 1192
+            },
+            {
+                "disease": "Northern Leaf Blight",
+                "images": 985
+            },
+            {
+                "disease": "healthy",
+                "images": 1162
+            }
+        ]
+    },
+    "Grape": {
+        "total_images": 4063,
+        "classes": [
+            {
+                "disease": "Black rot",
+                "images": 1180
+            },
+            {
+                "disease": "Esca (Black Measles)",
+                "images": 1384
+            },
+            {
+                "disease": "Leaf blight (Isariopsis Leaf Spot)",
+                "images": 1076
+            },
+            {
+                "disease": "healthy",
+                "images": 423
+            }
+        ]
+    },
+    "Orange": {
+        "total_images": 5507,
+        "classes": [
+            {
+                "disease": "Haunglongbing (Citrus greening)",
+                "images": 5507
+            }
+        ]
+    },
+    "Peach": {
+        "total_images": 2657,
+        "classes": [
+            {
+                "disease": "Bacterial spot",
+                "images": 2297
+            },
+            {
+                "disease": "Healthy",
+                "images": 360
+            }
+        ]
+    },
+    "Pepper,_bell": {
+        "total_images": 2475,
+        "classes": [
+            {
+                "disease": "Bacterial spot",
+                "images": 997
+            },
+            {
+                "disease": "healthy",
+                "images": 1478
+            }
+        ]
+    },
+    "Potato": {
+        "total_images": 2152,
+        "classes": [
+            {
+                "disease": "Early blight",
+                "images": 1000
+            },
+            {
+                "disease": "Healthy",
+                "images": 152
+            },
+            {
+                "disease": "Late blight",
+                "images": 1000
+            }
+        ]
+    },
+    "Raspberry": {
+        "total_images": 371,
+        "classes": [
+            {
+                "disease": "Healthy",
+                "images": 371
+            }
+        ]
+    },
+    "Soybean": {
+        "total_images": 5090,
+        "classes": [
+            {
+                "disease": "Healthy",
+                "images": 5090
+            }
+        ]
+    },
+    "Squash": {
+        "total_images": 1835,
+        "classes": [
+            {
+                "disease": "Powdery mildew",
+                "images": 1835
+            }
+        ]
+    },
+    "Strawberry": {
+        "total_images": 1565,
+        "classes": [
+            {
+                "disease": "Healthy",
+                "images": 456
+            },
+            {
+                "disease": "Leaf scorch",
+                "images": 1109
+            }
+        ]
+    },
+    "Tomato": {
+        "total_images": 18160,
+        "classes": [
+            {
+                "disease": "Bacterial spot",
+                "images": 2127
+            },
+            {
+                "disease": "Early blight",
+                "images": 1000
+            },
+            {
+                "disease": "Healthy",
+                "images": 1591
+            },
+            {
+                "disease": "Late blight",
+                "images": 1909
+            },
+            {
+                "disease": "Leaf Mold",
+                "images": 952
+            },
+            {
+                "disease": "Septoria leaf spot",
+                "images": 1771
+            },
+            {
+                "disease": "Spider mites Two-spotted spider mite",
+                "images": 1676
+            },
+            {
+                "disease": "Target Spot",
+                "images": 1404
+            },
+            {
+                "disease": "Tomato Yellow Leaf Curl Virus",
+                "images": 5357
+            },
+            {
+                "disease": "Tomato mosaic virus",
+                "images": 373
+            }
+        ]
+    }
+}

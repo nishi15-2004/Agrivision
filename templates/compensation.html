@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Crop Damage Compensation - Agrivision</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #eef8ed;
+            color: #183b20;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 25px;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .header {
+            background: linear-gradient(135deg, #16833a, #43b653);
+            color: white;
+            padding: 35px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            margin: 0 0 10px;
+            font-size: 34px;
+        }
+
+        .header p {
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        .home-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 11px 22px;
+            background: white;
+            color: #16833a;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .home-btn:hover {
+            background: #e9f7eb;
+        }
+
+        /* =========================
+           CARDS
+        ========================= */
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 18px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 18px rgba(0,0,0,.08);
+        }
+
+        .card h2 {
+            color: #08752e;
+            margin-top: 0;
+        }
+
+        .section-intro {
+            color: #55745b;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           SELECTOR
+        ========================= */
+
+        .selector-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        select {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #c8d9ca;
+            border-radius: 9px;
+            font-size: 15px;
+            background: white;
+            color: #183b20;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #188b3d;
+            box-shadow: 0 0 0 3px rgba(24,139,61,.12);
+        }
+
+        .search-btn {
+            width: 100%;
+            margin-top: 25px;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            background: #188b3d;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .search-btn:hover {
+            background: #116d2f;
+        }
+
+        /* =========================
+           RESULT
+        ========================= */
+
+        #result {
+            display: none;
+        }
+
+        .result-header {
+            background: #e5f7e5;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .result-header h2 {
+            margin-bottom: 12px;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .result-item {
+            background: #f6fbf5;
+            padding: 18px;
+            border-radius: 12px;
+            border-left: 5px solid #26a646;
+        }
+
+        .result-item strong {
+            display: block;
+            color: #08752e;
+            margin-bottom: 7px;
+        }
+
+        .result-item span {
+            line-height: 1.5;
+        }
+
+        .status {
+            padding: 10px 14px;
+            display: inline-block;
+            border-radius: 20px;
+            background: #dcf6e2;
+            color: #08752e;
+            font-weight: bold;
+        }
+
+        /* =========================
+           WARNING
+        ========================= */
+
+        .warning {
+            background: #fff5d6;
+            border-left: 5px solid #e5a400;
+            padding: 18px;
+            border-radius: 10px;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           OFFICIAL
+        ========================= */
+
+        .official {
+            margin-top: 25px;
+            padding: 20px;
+            background: #f1f8ff;
+            border-radius: 12px;
+        }
+
+        .official a {
+            display: inline-block;
+            margin-top: 10px;
+            margin-right: 10px;
+            padding: 11px 18px;
+            background: #1769aa;
+            color: white;
+            text-decoration: none;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .official a:hover {
+            background: #0e548c;
+        }
+
+        /* =========================
+           DAMAGE CARDS
+        ========================= */
+
+        .damage-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-top: 20px;
+        }
+
+        .damage-card {
+            background: #f9fcf8;
+            border-radius: 15px;
+            padding: 22px;
+            box-shadow: 0 5px 15px rgba(0,0,0,.07);
+            cursor: pointer;
+            transition: .2s;
+            border: 2px solid transparent;
+        }
+
+        .damage-card:hover {
+            transform: translateY(-4px);
+            border-color: #43b653;
+            box-shadow: 0 8px 20px rgba(0,0,0,.10);
+        }
+
+        .damage-card h3 {
+            color: #08752e;
+        }
+
+        .damage-card p {
+            line-height: 1.5;
+            color: #49634e;
+        }
+
+        .damage-icon {
+            font-size: 38px;
+        }
+
+        /* =========================
+           HELPLINE
+        ========================= */
+
+        .helpline {
+            text-align: center;
+            background: #126f32;
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 25px;
+        }
+
+        .helpline strong {
+            font-size: 28px;
+        }
+
+        /* =========================
+           LOADING
+        ========================= */
+
+        .loading {
+            color: #777;
+            font-style: italic;
+        }
+
+        .error-message {
+            background: #ffe7e7;
+            color: #a30000;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            display: none;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #55745b;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+        @media(max-width: 800px) {
+
+    .action-columns {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+        @media(max-width: 800px) {
+
+            .selector-grid,
+            .result-grid,
+            .damage-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 27px;
+            }
+
+        }
+        /* =========================
+   IMMEDIATE ACTION GUIDE
+========================= */
+
+.action-guide {
+    border: 2px solid #b9dfbf;
+    background: linear-gradient(
+        135deg,
+        #ffffff,
+        #f3fbf3
+    );
+}
+
+.action-guide-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #dcebdd;
+}
+
+.action-icon {
+    width: 65px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e4f7e7;
+    border-radius: 50%;
+    font-size: 34px;
+    flex-shrink: 0;
+}
+
+.action-guide-header h2 {
+    margin: 0 0 6px;
+    color: #08752e;
+}
+
+.action-guide-header p {
+    margin: 0;
+    color: #55745b;
+}
+
+.action-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 22px;
+}
+
+.action-box {
+    background: #f8fcf7;
+    padding: 20px;
+    border-radius: 14px;
+    border-left: 5px solid #26a646;
+}
+
+.action-box h3 {
+    margin-top: 0;
+    color: #08752e;
+}
+
+.action-box ul {
+    padding-left: 22px;
+    margin-bottom: 0;
+}
+
+.action-box li {
+    margin-bottom: 12px;
+    line-height: 1.5;
+    color: #38553e;
+}
+
+.report-box {
+    margin-top: 20px;
+    padding: 18px;
+    background: #eef7ff;
+    border-left: 5px solid #1769aa;
+    border-radius: 12px;
+}
+
+.report-box strong {
+    color: #145c91;
+}
+
+.report-box p {
+    margin-bottom: 0;
+    line-height: 1.6;
+}
+
+.action-warning {
+    margin-top: 20px;
+    padding: 16px;
+    background: #fff6d9;
+    border-left: 5px solid #e5a400;
+    border-radius: 10px;
+    line-height: 1.6;
+}
+
+    </style>
+<script src="{{ url_for('static', filename='js/language.js') }}"></script>
+</head>
+
+
+<body>
+
+<div class="container">
+
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header class="header">
+
+        <h1>🌾 Crop Damage Compensation</h1>
+
+        <p>
+            Find government crop insurance and compensation information
+            according to your State, District, Crop and Damage.
+        </p>
+
+        <a href="{{ url_for('home') }}" class="home-btn">
+            ← Back to Agrivision
+        </a>
+
+    </header>
+
+
+    <!-- =========================
+         SELECTOR
+    ========================= -->
+
+    <section class="card">
+
+        <h2>🔎 Find Support for Your Crop Loss</h2>
+
+        <p>
+            Select your State, District, Crop and Damage Type.
+            Agrivision will check the available compensation information.
+        </p>
+
+
+        <div class="selector-grid">
+
+
+            <!-- STATE -->
+
+            <div>
+
+                <label for="state">
+                    🇮🇳 State / Union Territory
+                </label>
+
+                <select
+                    id="state"
+                    onchange="loadDistricts()">
+
+                    <option value="">
+                        Loading States...
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- DISTRICT -->
+
+            <div>
+
+                <label for="district">
+                    📍 District
+                </label>
+
+                <select id="district">
+
+                    <option value="">
+                        Select State First
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- CROP -->
+
+            <div>
+
+                <label for="crop">
+                    🌾 Crop
+                </label>
+
+               <select id="crop">
+    <option value="">Loading Crops...</option>
+</select>
+            </div>
+
+
+            <!-- DAMAGE -->
+
+            <div>
+
+                <label for="damage">
+                    ⚠️ Type of Damage
+                </label>
+
+                <select id="damage">
+
+                    <option value="">
+                        Loading Damage Types...
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <div
+            id="error-message"
+            class="error-message">
+        </div>
+
+
+        <button
+            class="search-btn"
+            onclick="findCompensation()">
+
+            🔍 Find Available Support
+
+        </button>
+
+    </section>
+
+<!-- =========================
+     IMMEDIATE ACTION GUIDE
+========================= -->
+
+<section class="card action-guide" id="action-guide">
+
+    <div class="action-guide-header">
+
+        <div class="action-icon" id="action-icon">
+            🚨
+        </div>
+
+        <div>
+            <h2 id="action-title">
+                What Should You Do First?
+            </h2>
+
+            <p id="action-subtitle">
+                Select a damage type to get step-by-step guidance.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="action-columns">
+
+
+        <!-- FIRST STEPS -->
+
+        <div class="action-box">
+
+            <h3>
+                🚨 First Things To Do
+            </h3>
+
+            <ul id="first-steps">
+
+                <li>
+                    Select a damage type above to see what
+                    you should do first.
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- EVIDENCE -->
+
+        <div class="action-box">
+
+            <h3>
+                📸 Evidence You Should Keep
+            </h3>
+
+            <ul id="evidence-list">
+
+                <li>
+                    Photos and documents may be useful
+                    for assessment.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <div class="report-box">
+
+        <strong>
+            📢 Reporting
+        </strong>
+
+        <p id="report-text">
+            Select a damage type to see reporting guidance.
+        </p>
+
+    </div>
+
+
+    <div class="action-warning">
+
+        ⚠️ <strong>Important:</strong>
+
+        Do not rely only on this general guidance.
+        Exact reporting deadlines, documents, assessment
+        procedures and eligibility can depend on the
+        applicable scheme, season, notified area and
+        current government/insurance rules.
+
+    </div>
+
+</section>
+
+    <!-- =========================
+         RESULT
+    ========================= -->
+
+    <section
+        class="card"
+        id="result">
+
+
+        <div class="result-header">
+
+            <h2>💰 Available Support</h2>
+
+            <span class="status">
+                Government / Insurance Support
+            </span>
+
+        </div>
+
+
+        <div class="result-grid">
+
+
+            <!-- LOCATION -->
+
+            <div class="result-item">
+
+                <strong>
+                    📍 Location
+                </strong>
+
+                <span id="show-location">
+                </span>
+
+            </div>
+
+
+            <!-- CROP -->
+
+            <div class="result-item">
+
+                <strong>
+                    🌾 Crop
+                </strong>
+
+                <span id="show-crop">
+                </span>
+
+            </div>
+
+
+            <!-- DAMAGE -->
+
+            <div class="result-item">
+
+                <strong>
+                    ⚠️ Damage
+                </strong>
+
+                <span id="show-damage">
+                </span>
+
+            </div>
+
+
+            <!-- SCHEME -->
+
+            <div class="result-item">
+
+                <strong>
+                    🏛️ Main Scheme
+                </strong>
+
+                <span id="show-scheme">
+                    -
+                </span>
+
+            </div>
+
+
+            <!-- ELIGIBILITY -->
+
+            <div class="result-item">
+
+                <strong>
+                    📋 Eligibility
+                </strong>
+
+                <span id="show-eligibility">
+                    -
+                </span>
+
+            </div>
+
+
+            <!-- COVERAGE -->
+
+            <div class="result-item">
+
+                <strong>
+                    💰 Coverage / Compensation
+                </strong>
+
+                <span id="show-coverage">
+                    -
+                </span>
+
+            </div>
+
+
+            <!-- CLAIM PROCESS -->
+
+            <div class="result-item">
+
+                <strong>
+                    📝 Claim Process
+                </strong>
+
+                <span id="show-claim">
+                    -
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="warning">
+
+            ⚠️ <strong>Important:</strong>
+
+            The exact claim amount and eligibility depend on
+            the applicable crop, season, notified area,
+            insurance coverage and current government notification.
+
+            Always verify the latest official notification
+            before submitting a claim.
+
+        </div>
+
+
+        <div class="official">
+
+            <h3>
+                🔗 Official Government Information
+            </h3>
+
+            <p>
+                Check the latest PMFBY notification, policy,
+                guidelines and claim information.
+            </p>
+
+
+            <a
+                href="https://pmfby.gov.in/"
+                target="_blank">
+
+                Open PMFBY Official Portal
+
+            </a>
+
+
+            <a
+                href="https://pmfby.gov.in/guidelines"
+                target="_blank">
+
+                View Official Guidelines
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         DAMAGE INFORMATION
+    ========================= -->
+
+    <section class="card">
+
+        <h2>
+            🌱 Common Crop Loss Situations
+        </h2>
+
+        <p class="section-intro">
+
+            Select a crop-loss situation to automatically
+            choose the corresponding damage type.
+
+        </p>
+
+
+        <div class="damage-grid">
+
+
+            <div
+                class="damage-card"
+                onclick="selectDamage(5)">
+
+                <div class="damage-icon">
+                    🔥
+                </div>
+
+                <h3>
+                    Fire / Lightning
+                </h3>
+
+                <p>
+                    Eligible crop loss caused by natural fire
+                    or lightning, subject to applicable conditions.
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="damage-card"
+                onclick="selectDamage(1)">
+
+                <div class="damage-icon">
+                    🌊
+                </div>
+
+                <h3>
+                    Flood
+                </h3>
+
+                <p>
+                    Crop damage caused by flooding or excessive
+                    water, subject to applicable rules.
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="damage-card"
+                onclick="selectDamage(3)">
+
+                <div class="damage-icon">
+                    🧊
+                </div>
+
+                <h3>
+                    Hailstorm
+                </h3>
+
+                <p>
+                    Crop damage caused by hailstorm under
+                    applicable notified risks.
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="damage-card"
+                onclick="selectDamage(4)">
+
+                <div class="damage-icon">
+                    🌪️
+                </div>
+
+                <h3>
+                    Cyclone / Storm
+                </h3>
+
+                <p>
+                    Crop damage caused by cyclone, storm
+                    or strong winds.
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="damage-card"
+                onclick="selectDamage(2)">
+
+                <div class="damage-icon">
+                    ☀️
+                </div>
+
+                <h3>
+                    Drought
+                </h3>
+
+                <p>
+                    Crop loss caused by drought or prolonged
+                    moisture deficiency.
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="damage-card"
+                onclick="selectDamage(6)">
+
+                <div class="damage-icon">
+                    🐛
+                </div>
+
+                <h3>
+                    Pest Attack
+                </h3>
+
+                <p>
+                    Crop loss caused by notified pests
+                    where applicable.
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="damage-card"
+                onclick="selectDamage(7)">
+
+                <div class="damage-icon">
+                    🌿
+                </div>
+
+                <h3>
+                    Crop Disease
+                </h3>
+
+                <p>
+                    Crop loss caused by notified crop
+                    diseases where covered.
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="damage-card"
+                onclick="selectDamage(8)">
+
+                <div class="damage-icon">
+                    🌱
+                </div>
+
+                <h3>
+                    Prevented Sowing
+                </h3>
+
+                <p>
+                    Loss where sowing or planting could not
+                    take place because of notified conditions.
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="damage-card"
+                onclick="selectDamage(9)">
+
+                <div class="damage-icon">
+                    🌾
+                </div>
+
+                <h3>
+                    Post-Harvest Loss
+                </h3>
+
+                <p>
+                    Eligible crop loss occurring during
+                    the specified post-harvest period.
+                </p>
+
+            </div>
+
+
+
+            <div
+                class="damage-card"
+                onclick="selectDamage(10)">
+
+                <div class="damage-icon">
+                    📍
+                </div>
+
+                <h3>
+                    Localized Calamity
+                </h3>
+
+                <p>
+                    Localized crop damage subject to
+                    applicable government and insurance rules.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         HELPLINE
+    ========================= -->
+
+    <section class="helpline">
+
+        <h2>
+            📞 PMFBY Farmer Helpline
+        </h2>
+
+        <p>
+            For crop insurance and loss-reporting assistance
+        </p>
+
+        <strong>
+            14447
+        </strong>
+
+    </section>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        🌾 Agrivision — Smart Agriculture Support System
+
+        <br><br>
+
+        Information should always be verified against
+        the latest official State/Season notification.
+
+    </footer>
+
+
+</div>
+
+
+
+
+
+<script src="{{ url_for('static', filename='js/compensation.js') }}"></script>
+
+</body>
+</html>

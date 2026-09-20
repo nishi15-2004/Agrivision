@@ -1,0 +1,266 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f8f3;
+    color: #243424;
+}
+
+.schemes-page {
+    min-height: 100vh;
+}
+
+
+/* HEADER */
+
+.schemes-header {
+    background: linear-gradient(135deg, #176b3a, #2e8b57);
+    color: white;
+    padding: 45px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.schemes-header h1 {
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+
+.schemes-header p {
+    font-size: 17px;
+    opacity: 0.95;
+    max-width: 750px;
+}
+
+.home-btn {
+    background: white;
+    color: #176b3a;
+    text-decoration: none;
+    padding: 12px 22px;
+    border-radius: 25px;
+    font-weight: bold;
+}
+
+
+/* SEARCH */
+
+.search-section {
+    background: white;
+    margin: 30px 7%;
+    padding: 28px;
+    border-radius: 18px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.search-section h2 {
+    margin-bottom: 8px;
+}
+
+.search-section p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.search-box {
+    display: flex;
+    gap: 15px;
+}
+
+.search-box input,
+.search-box select {
+    flex: 1;
+    padding: 14px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+
+/* CARDS */
+
+.schemes-container {
+    width: 86%;
+    margin: 30px auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.scheme-card {
+    background: white;
+    padding: 28px;
+    border-radius: 18px;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+    transition: 0.25s;
+    border-top: 5px solid #2e8b57;
+}
+
+.scheme-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.13);
+}
+
+.scheme-icon {
+    font-size: 40px;
+    margin-bottom: 12px;
+}
+
+.scheme-tag {
+    display: inline-block;
+    background: #e3f5e9;
+    color: #176b3a;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.scheme-tag.insurance {
+    background: #e8f0ff;
+    color: #315da8;
+}
+
+.scheme-tag.market {
+    background: #fff2d9;
+    color: #a56800;
+}
+
+.scheme-tag.soil {
+    background: #e9f6dc;
+    color: #4b7c25;
+}
+
+.scheme-tag.credit {
+    background: #f1e6ff;
+    color: #7041a8;
+}
+
+.scheme-card h2 {
+    margin-bottom: 12px;
+    color: #173d25;
+}
+
+.scheme-card > p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.scheme-info {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 22px;
+}
+
+.scheme-info div {
+    background: #f7faf7;
+    padding: 12px;
+    border-radius: 10px;
+}
+
+.scheme-info strong {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.scheme-info span {
+    color: #666;
+    font-size: 14px;
+}
+
+
+.official-btn {
+    display: inline-block;
+    background: #176b3a;
+    color: white;
+    text-decoration: none;
+    padding: 12px 18px;
+    border-radius: 9px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.official-btn:hover {
+    background: #0e4d29;
+}
+
+
+/* STATE */
+
+.state-section,
+.notice {
+    width: 86%;
+    margin: 30px auto;
+    padding: 28px;
+    border-radius: 18px;
+}
+
+.state-section {
+    background: #eaf6ee;
+    border-left: 5px solid #2e8b57;
+}
+
+.state-section h2,
+.notice h2 {
+    margin-bottom: 12px;
+}
+
+.state-section p,
+.notice p {
+    line-height: 1.7;
+    margin-bottom: 8px;
+}
+
+
+/* NOTICE */
+
+.notice {
+    background: #fff8df;
+    border-left: 5px solid #e0a400;
+}
+
+
+/* FOOTER */
+
+footer {
+    margin-top: 50px;
+    background: #173d25;
+    color: white;
+    text-align: center;
+    padding: 35px;
+}
+
+footer p {
+    margin-top: 8px;
+    opacity: 0.85;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 800px) {
+
+    .schemes-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .schemes-header h1 {
+        font-size: 28px;
+    }
+
+    .schemes-container {
+        grid-template-columns: 1fr;
+    }
+
+    .search-box {
+        flex-direction: column;
+    }
+}

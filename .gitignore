@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environments
+venv/
+env/
+ai_env/
+
+# Datasets
+datasets/
+plantvillage_data/
+Deep-Plant-Disease-Dataset-Is-All-You-Need-for-Plant-Disease-Identification/
+
+
+
+# Database
+*.db
+
+# Environment / secrets
+.env
+
+# VS Code
+.vscode/
+
+# OS
+Thumbs.db
+.DS_Store

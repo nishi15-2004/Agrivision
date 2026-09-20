@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AgriMitra Weather</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/weather.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+          <script src="{{ url_for('static', filename='js/language.js') }}"></script>
+
+</head>
+
+<body>
+
+<div class="weather-dashboard">
+
+    <!-- ===========================
+            TOP BAR
+    ============================ -->
+
+    <header class="top-bar">
+
+        <div class="title-box">
+
+            <h1>🌦 Weather Dashboard</h1>
+
+            <p>Real-Time Weather for Smart Farming</p>
+
+        </div>
+
+        <form action="/weather"
+              method="POST"
+              class="search-box">
+
+            <input
+                type="text"
+                name="city"
+                placeholder="Search City..."
+                required>
+
+            <button type="submit">
+
+                🔍 Search
+
+            </button>
+
+            <button
+                type="button"
+                onclick="getLocation()">
+
+                📍 Current Location
+
+            </button>
+
+        </form>
+
+    </header>
+
+    <!-- ===========================
+            ERROR
+    ============================ -->
+
+    {% if error %}
+
+    <div class="error-box">
+
+        {{ error }}
+
+    </div>
+
+    {% endif %}
+
+    {% if weather %}
+
+    <!-- ===========================
+            MAIN GRID
+    ============================ -->
+
+    <section class="main-grid">
+
+        <!-- LEFT WEATHER CARD -->
+
+        <div class="weather-card">
+
+            <img
+                src="https://openweathermap.org/img/wn/{{ weather.icon }}@4x.png"
+                alt="Weather Icon">
+
+            <h1>{{ weather.temp }}°C</h1>
+
+            <h2>{{ weather.condition }}</h2>
+
+            <h3>📍 {{ weather.city }}</h3>
+
+            <div class="temp-row">
+
+                <div class="mini-temp">
+
+                    <span>⬆ Max</span>
+
+                    <h4>{{ weather.temp_max }}°C</h4>
+
+                </div>
+
+                <div class="mini-temp">
+
+                    <span>⬇ Min</span>
+
+                    <h4>{{ weather.temp_min }}°C</h4>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT INFO GRID -->
+
+        <div class="info-grid">
+                        <!-- Humidity -->
+
+            <div class="info-card">
+
+                <div class="icon">💧</div>
+
+                <h3>Humidity</h3>
+
+                <p>{{ weather.humidity }}%</p>
+
+            </div>
+
+
+            <!-- Wind -->
+
+            <div class="info-card">
+
+                <div class="icon">💨</div>
+
+                <h3>Wind Speed</h3>
+
+                <p>{{ weather.wind }} m/s</p>
+
+            </div>
+
+
+            <!-- Pressure -->
+
+            <div class="info-card">
+
+                <div class="icon">🌡</div>
+
+                <h3>Pressure</h3>
+
+                <p>{{ weather.pressure }} hPa</p>
+
+            </div>
+
+
+            <!-- Visibility -->
+
+            <div class="info-card">
+
+                <div class="icon">👀</div>
+
+                <h3>Visibility</h3>
+
+                <p>{{ weather.visibility }} km</p>
+
+            </div>
+
+
+            <!-- Sunrise -->
+
+            <div class="info-card">
+
+                <div class="icon">🌅</div>
+
+                <h3>Sunrise</h3>
+
+                <p>{{ weather.sunrise }}</p>
+
+            </div>
+
+
+            <!-- Sunset -->
+
+            <div class="info-card">
+
+                <div class="icon">🌇</div>
+
+                <h3>Sunset</h3>
+
+                <p>{{ weather.sunset }}</p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===========================
+            FARMER ADVISORY
+    ============================ -->
+
+    <section class="advisory-section">
+
+        <div class="advisory-card">
+
+            <div class="advisory-icon">
+
+                🌾
+
+            </div>
+
+            <div class="advisory-text">
+
+                <h2>Smart Farmer Advisory</h2>
+
+                <p>{{ advice }}</p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===========================
+            FORECAST TITLE
+    ============================ -->
+
+    {% if forecast %}
+
+    <h2 class="forecast-title">
+
+        📅 5-Day Weather Forecast
+
+    </h2>
+
+    <div class="forecast-grid">
+                {% for day in forecast %}
+
+        <div class="forecast-card">
+
+            <h3>{{ day.day }}</h3>
+
+            <img
+                src="https://openweathermap.org/img/wn/{{ day.icon }}@2x.png"
+                alt="Forecast Icon">
+
+            <h2>{{ day.temp }}°C</h2>
+
+            <p>{{ day.condition }}</p>
+
+            <div class="forecast-info">
+
+                <span>🌧 {{ day.rain }}%</span>
+
+                <span>💨 {{ day.wind_direction }}</span>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% endif %}
+
+    <!-- ===========================
+            FOOTER
+    ============================ -->
+
+    <footer class="weather-footer">
+
+        <h2>🌾 Agrivision</h2>
+
+        <p>Smart Agriculture Support System</p>
+
+        <p>Weather Data Powered by OpenWeatherMap</p>
+
+    </footer>
+
+    {% endif %}
+
+</div>
+
+<script src="{{ url_for('static', filename='js/weather.js') }}"></script>
+
+</body>
+
+</html>

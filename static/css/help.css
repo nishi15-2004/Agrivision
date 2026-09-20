@@ -1,0 +1,245 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f8f3;
+    color: #243424;
+}
+
+.help-page {
+    min-height: 100vh;
+}
+
+
+/* HEADER */
+
+.help-header {
+    background: linear-gradient(135deg, #176b3a, #2e8b57);
+    color: white;
+    padding: 45px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.help-header h1 {
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+
+.help-header p {
+    font-size: 17px;
+    max-width: 750px;
+    line-height: 1.6;
+}
+
+.home-btn {
+    background: white;
+    color: #176b3a;
+    text-decoration: none;
+    padding: 12px 22px;
+    border-radius: 25px;
+    font-weight: bold;
+}
+
+
+/* SECTIONS */
+
+.quick-help,
+.services,
+.faq,
+.important {
+    width: 86%;
+    margin: 35px auto;
+}
+
+.quick-help h2,
+.services h2,
+.faq h2,
+.important h2 {
+    margin-bottom: 20px;
+    color: #173d25;
+}
+
+
+/* HELP CARDS */
+
+.help-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.help-card {
+    background: white;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+    border-top: 5px solid #2e8b57;
+}
+
+.help-card.emergency {
+    border-top-color: #d9534f;
+}
+
+.card-icon {
+    font-size: 38px;
+    margin-bottom: 12px;
+}
+
+.help-card h3 {
+    margin-bottom: 10px;
+}
+
+.help-card p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 18px;
+}
+
+.call-btn,
+.action-btn {
+    display: inline-block;
+    text-decoration: none;
+    padding: 11px 15px;
+    border-radius: 9px;
+    font-weight: bold;
+}
+
+.call-btn {
+    background: #d9534f;
+    color: white;
+}
+
+.action-btn {
+    background: #176b3a;
+    color: white;
+}
+
+
+/* SERVICES */
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.service {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    text-decoration: none;
+    color: #243424;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+    transition: 0.2s;
+}
+
+.service:hover {
+    transform: translateY(-4px);
+}
+
+.service > span {
+    font-size: 35px;
+}
+
+.service p {
+    color: #666;
+    margin-top: 5px;
+}
+
+
+/* FAQ */
+
+.faq {
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.07);
+}
+
+details {
+    border-bottom: 1px solid #ddd;
+    padding: 17px 5px;
+}
+
+summary {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+details p {
+    color: #666;
+    line-height: 1.6;
+    padding: 12px 0 5px;
+}
+
+
+/* IMPORTANT */
+
+.important {
+    background: #fff8df;
+    border-left: 5px solid #e0a400;
+    padding: 25px;
+    border-radius: 12px;
+}
+
+.important p {
+    line-height: 1.7;
+}
+
+
+/* FOOTER */
+
+footer {
+    background: #173d25;
+    color: white;
+    text-align: center;
+    padding: 35px;
+    margin-top: 50px;
+}
+
+footer p {
+    margin-top: 8px;
+    opacity: 0.85;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 1000px) {
+
+    .help-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .service-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 650px) {
+
+    .help-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .help-header h1 {
+        font-size: 28px;
+    }
+
+    .help-grid,
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+}
