@@ -1,0 +1,260 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | AgriVision</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+        }
+
+        .login-container {
+            display: flex;
+            width: 850px;
+            max-width: 100%;
+            min-height: 500px;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .welcome-panel {
+            flex: 1;
+            background: linear-gradient(145deg, #1b5e20, #43a047);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 35px;
+            text-align: center;
+        }
+
+        .welcome-panel .emoji {
+            font-size: 75px;
+            margin-bottom: 20px;
+        }
+
+        .welcome-panel h1 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .welcome-panel p {
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        .form-panel {
+            flex: 1;
+            padding: 45px 35px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .form-panel h2 {
+            color: #1b5e20;
+            font-size: 29px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #777;
+            margin-bottom: 28px;
+            font-size: 14px;
+        }
+
+        .input-group {
+            margin-bottom: 18px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .input-group input:focus {
+            border-color: #2e7d32;
+            box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.12);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            margin-top: 5px;
+            background: #2e7d32;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .login-btn:hover {
+            background: #1b5e20;
+        }
+
+        .message {
+            margin-top: 15px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .signup-text {
+            text-align: center;
+            margin-top: 22px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .signup-text a {
+            color: #2e7d32;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        @media (max-width: 650px) {
+            .login-container {
+                flex-direction: column;
+            }
+
+            .welcome-panel {
+                padding: 25px;
+            }
+
+            .welcome-panel .emoji {
+                font-size: 45px;
+                margin-bottom: 10px;
+            }
+
+            .welcome-panel h1 {
+                font-size: 26px;
+            }
+
+            .form-panel {
+                padding: 30px 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+
+        <div class="welcome-panel">
+            <div class="emoji">🌱</div>
+            <h1>AgriVision</h1>
+            <p>
+                Smart Farming, Better Future!<br>
+                Your farming journey starts here.
+            </p>
+        </div>
+
+        <div class="form-panel">
+            <h2>Welcome Back!</h2>
+            <p class="subtitle">Login to your AgriVision account</p>
+
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="email">Email Address</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="login-btn">Login</button>
+                <p id="message" class="message" role="status"></p>
+            </form>
+
+            <p class="signup-text">
+                Don't have an account?
+                <a href="/signup">Create Account</a>
+            </p>
+        </div>
+
+    </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            const message = document.getElementById("message");
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value;
+
+            message.style.color = "#555";
+            message.textContent = "Please wait...";
+
+            try {
+                const response = await fetch("/api/login", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.success) {
+                    window.location.href = data.redirect || "/";
+                } else {
+                    message.style.color = "#c62828";
+                    message.textContent = data.message || "Login failed. Please check your details.";
+                }
+            } catch (error) {
+                message.style.color = "#c62828";
+                message.textContent = "Server se connect nahi ho paya. Flask app check karo.";
+            }
+        });
+    </script>
+</body>
+</html>
+

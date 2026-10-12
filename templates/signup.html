@@ -1,0 +1,220 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account | AgriVision</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+        }
+
+        .signup-box {
+            width: 430px;
+            max-width: 100%;
+            padding: 35px;
+            background: white;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .logo {
+            text-align: center;
+            font-size: 42px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1b5e20;
+            margin: 8px 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #777;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        label {
+            display: block;
+            margin: 14px 0 7px;
+            color: #333;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #2e7d32;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 22px;
+            padding: 13px;
+            border: none;
+            border-radius: 8px;
+            background: #2e7d32;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1b5e20;
+        }
+
+        #message {
+            margin-top: 14px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .login-link {
+            margin-top: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+
+        a {
+            color: #2e7d32;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="signup-box">
+        <div class="logo">🌱</div>
+        <h1>Join AgriVision</h1>
+        <p class="subtitle">Create your farmer account</p>
+
+        <form id="signupForm">
+            <label for="name">Full Name</label>
+            <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Enter your full name"
+                autocomplete="name"
+                required
+            >
+
+            <label for="email">Email Address</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your email"
+                autocomplete="email"
+                required
+            >
+
+            <label for="password">Create Password</label>
+            <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="At least 8 characters"
+                minlength="8"
+                autocomplete="new-password"
+                required
+            >
+
+            <label for="confirmPassword">Confirm Password</label>
+            <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                placeholder="Enter password again"
+                minlength="8"
+                autocomplete="new-password"
+                required
+            >
+
+            <button type="submit">Create Account</button>
+            <p id="message" role="status"></p>
+        </form>
+
+        <p class="login-link">
+            Already have an account?
+            <a href="/login">Login here</a>
+        </p>
+    </div>
+
+    <script>
+        document.getElementById("signupForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+            const message = document.getElementById("message");
+
+            if (password !== confirmPassword) {
+                message.style.color = "#c62828";
+                message.textContent = "Passwords match nahi kar rahe. Dobara check karo.";
+                return;
+            }
+
+            message.style.color = "#555";
+            message.textContent = "Please wait...";
+
+            try {
+                const response = await fetch("/api/signup", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ name, email, password })
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.success) {
+                    message.style.color = "#2e7d32";
+                    message.textContent = "Account created! Login page par ja rahe hain...";
+
+                    setTimeout(() => {
+                        window.location.href = "/login";
+                    }, 1200);
+                } else {
+                    message.style.color = "#c62828";
+                    message.textContent = data.message || "Account create nahi hua.";
+                }
+            } catch (error) {
+                message.style.color = "#c62828";
+                message.textContent = "Server se connect nahi ho paya. Flask app check karo.";
+            }
+        });
+    </script>
+</body>
+</html>
+```

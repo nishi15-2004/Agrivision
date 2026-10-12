@@ -1,9 +1,11 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, session, redirect
+
 import requests
 import sqlite3
 from datetime import datetime
 import os
 from werkzeug.utils import secure_filename
+from werkzeug.security import generate_password_hash, check_password_hash
 
 import torch
 from torchvision import transforms, models
@@ -15,6 +17,10 @@ from PIL import Image
 # =========================================================
 
 app = Flask(__name__)
+app.config["SECRET_KEY"] = os.environ.get(
+    "FLASK_SECRET_KEY",
+    "agrivision-local-development-key-change-before-deployment"
+)
 
 DATABASE = "agrivision.db"
 
@@ -27,6 +33,26 @@ app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 
+@app.before_request
+def require_login():
+    public_routes = [
+        "login",
+        "signup",
+        "api_login",
+        "api_signup",
+        "static"
+    ]
+
+    if request.endpoint is None:
+        return None
+
+    if request.endpoint in public_routes:
+        return None
+
+    if "user_id" not in session:
+        return redirect("/login")
+
+
 # =========================================================
 # DATABASE
 # =========================================================
@@ -35,6 +61,26 @@ def db_connection():
     conn = sqlite3.connect(DATABASE)
     conn.row_factory = sqlite3.Row
     return conn
+
+def init_users_table():
+    conn = db_connection()
+    try:
+        conn.execute("""
+            CREATE TABLE IF NOT EXISTS users (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                name TEXT NOT NULL,
+                email TEXT NOT NULL UNIQUE,
+                password_hash TEXT NOT NULL,
+                created_at TEXT DEFAULT CURRENT_TIMESTAMP
+            )
+        """)
+        conn.commit()
+    finally:
+        conn.close()
+
+
+init_users_table()
+
 
 
 # =========================================================
@@ -228,8 +274,107 @@ def get_translation(language, key, default_text):
 
 @app.route("/")
 def home():
+    print("HOME ROUTE CHECK:", dict(session))
+
+    if "user_id" not in session:
+        return redirect("/login")
+
     return render_template("index.html")
 
+@app.route("/login")
+def login():
+    return render_template("login.html")
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect("/login")
+
+@app.route("/signup")
+def signup():
+    return render_template("signup.html")
+
+@app.route("/api/signup", methods=["POST"])
+def api_signup():
+    data = request.get_json(silent=True) or {}
+
+    name = data.get("name", "").strip()
+    email = data.get("email", "").strip().lower()
+    password = data.get("password", "")
+
+    if not name or not email or not password:
+        return jsonify({
+            "success": False,
+            "message": "Please fill in all fields."
+        }), 400
+
+    if len(password) < 8:
+        return jsonify({
+            "success": False,
+            "message": "Password must be at least 8 characters."
+        }), 400
+
+    conn = db_connection()
+    try:
+        conn.execute(
+            """
+            INSERT INTO users (name, email, password_hash)
+            VALUES (?, ?, ?)
+            """,
+            (name, email, generate_password_hash(password))
+        )
+        conn.commit()
+
+        return jsonify({
+            "success": True,
+            "message": "Account created successfully."
+        }), 201
+
+    except sqlite3.IntegrityError:
+        return jsonify({
+            "success": False,
+            "message": "This email is already registered."
+        }), 409
+
+    finally:
+        conn.close()
+
+@app.route("/api/login", methods=["POST"])
+def api_login():
+    data = request.get_json(silent=True) or {}
+
+    email = data.get("email", "").strip().lower()
+    password = data.get("password", "")
+
+    conn = db_connection()
+    try:
+        user = conn.execute(
+            """
+            SELECT id, name, email, password_hash
+            FROM users
+            WHERE email = ?
+            LIMIT 1
+            """,
+            (email,)
+        ).fetchone()
+    finally:
+        conn.close()
+
+    if not user or not check_password_hash(
+        user["password_hash"], password
+    ):
+        return jsonify({
+            "success": False,
+            "message": "Invalid email or password."
+        }), 401
+
+    session["user_id"] = user["id"]
+    session["user_name"] = user["name"]
+
+    return jsonify({
+        "success": True,
+        "redirect": "/"
+    })
 
 # =========================================================
 # WEATHER

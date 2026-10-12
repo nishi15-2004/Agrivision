@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Agrivision - Smart Agriculture Support System</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f8f3;
+            color: #243b2a;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: #176b35;
+            color: white;
+            padding: 15px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #c8f7a5;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 22px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #c8f7a5;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 78vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px;
+            background:
+                linear-gradient(rgba(11, 67, 31, 0.78), rgba(11, 67, 31, 0.78)),
+                url("https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1600&q=80");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 850px;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 58px;
+            margin-bottom: 15px;
+        }
+
+        .hero-content h1 span {
+            color: #bdf58e;
+        }
+
+        .hero-content h2 {
+            font-size: 25px;
+            margin-bottom: 18px;
+            font-weight: 500;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: #8bd450;
+            color: #14351e;
+        }
+
+        .btn-primary:hover {
+            background: #a5ed70;
+            transform: translateY(-2px);
+        }
+
+        .btn-light {
+            background: white;
+            color: #176b35;
+        }
+
+        .btn-light:hover {
+            background: #e8f5e9;
+            transform: translateY(-2px);
+        }
+
+        /* SECTION */
+        .section {
+            padding: 65px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            color: #176b35;
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        /* FEATURE CARDS */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px 25px;
+            border-radius: 14px;
+            text-align: center;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+            transition: 0.3s;
+            border: 1px solid #e2eee3;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.13);
+        }
+
+        .feature-icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            color: #176b35;
+            margin-bottom: 12px;
+            font-size: 21px;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .card-btn {
+            display: inline-block;
+            background: #176b35;
+            color: white;
+            text-decoration: none;
+            padding: 9px 18px;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .card-btn:hover {
+            background: #0d4d25;
+        }
+
+        /* ABOUT */
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            max-width: 950px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            font-size: 17px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* HIGHLIGHTS */
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .highlight {
+            background: #e9f7e5;
+            padding: 25px 15px;
+            text-align: center;
+            border-radius: 12px;
+        }
+
+        .highlight h3 {
+            color: #176b35;
+            font-size: 28px;
+            margin-bottom: 7px;
+        }
+
+        .highlight p {
+            color: #555;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #123d21;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        footer h3 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        footer p {
+            color: #c8d8ca;
+            margin: 6px 0;
+        }
+
+        /* MOBILE */
+        @media (max-width: 850px) {
+
+            .navbar {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .hero-content h1 {
+                font-size: 42px;
+            }
+
+            .hero-content h2 {
+                font-size: 21px;
+            }
+
+            .features {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .highlights {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 550px) {
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .highlights {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 35px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+
+    <div class="logo">
+        🌱 Agri<span>vision</span>
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('weather') }}">Weather</a></li>
+        <li><a href="{{ url_for('disease') }}">Disease Detection</a></li>
+        <li><a href="{{ url_for('market') }}">Market</a></li>
+        <li><a href="{{ url_for('schemes') }}">Schemes</a></li>
+        <li><a href="{{ url_for('compensation') }}">Compensation</a></li>
+        <li><a href="{{ url_for('help_page') }}">Help</a></li>
+    </ul>
+
+</nav>
+
+
+<!-- HERO -->
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>Welcome to <span>AgriVision</span> 🌱</h1>
+
+        <h2>Smart Agriculture Support System</h2>
+
+        <p>
+            A farmer-friendly platform that brings weather information,
+            AI-based crop disease detection, market prices,
+            government schemes and compensation support together
+            in one place.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="{{ url_for('disease') }}" class="btn btn-primary">
+                🔬 Detect Crop Disease
+            </a>
+
+            <a href="{{ url_for('weather') }}" class="btn btn-light">
+                🌦️ Check Weather
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FEATURES -->
+<section class="section">
+
+    <div class="section-title">
+
+        <h2>Our Agriculture Services</h2>
+
+        <p>
+            Useful tools and information for smarter farming decisions
+        </p>
+
+    </div>
+
+
+    <div class="features">
+
+        <!-- WEATHER -->
+        <div class="feature-card">
+
+            <div class="feature-icon">🌦️</div>
+
+            <h3>Weather Updates</h3>
+
+            <p>
+                Check current weather conditions and forecasts
+                to plan farming activities.
+            </p>
+
+            <a href="{{ url_for('weather') }}" class="card-btn">
+                Explore
+            </a>
+
+        </div>
+
+
+        <!-- DISEASE -->
+        <div class="feature-card">
+
+            <div class="feature-icon">🌿</div>
+
+            <h3>Crop Disease Detection</h3>
+
+            <p>
+                Upload a crop image and use AI-based analysis
+                to identify possible crop diseases.
+            </p>
+
+            <a href="{{ url_for('disease') }}" class="card-btn">
+                Detect Disease
+            </a>
+
+        </div>
+
+
+        <!-- MARKET -->
+        <div class="feature-card">
+
+            <div class="feature-icon">📈</div>
+
+            <h3>Market Prices</h3>
+
+            <p>
+                Access agricultural commodity and mandi
+                price information.
+            </p>
+
+            <a href="{{ url_for('market') }}" class="card-btn">
+                View Prices
+            </a>
+
+        </div>
+
+
+        <!-- SCHEMES -->
+        <div class="feature-card">
+
+            <div class="feature-icon">🏛️</div>
+
+            <h3>Government Schemes</h3>
+
+            <p>
+                Find useful government schemes and agriculture
+                support information.
+            </p>
+
+            <a href="{{ url_for('schemes') }}" class="card-btn">
+                View Schemes
+            </a>
+
+        </div>
+
+
+        <!-- COMPENSATION -->
+        <div class="feature-card">
+
+            <div class="feature-icon">🌾</div>
+
+            <h3>Crop Compensation</h3>
+
+            <p>
+                Get information related to crop damage
+                and compensation support.
+            </p>
+
+            <a href="{{ url_for('compensation') }}" class="card-btn">
+                Learn More
+            </a>
+
+        </div>
+
+
+        <!-- HELP -->
+        <div class="feature-card">
+
+            <div class="feature-icon">👨‍🌾</div>
+
+            <h3>Farmer Help</h3>
+
+            <p>
+                Get basic agriculture-related guidance
+                and support information.
+            </p>
+
+            <a href="{{ url_for('help_page') }}" class="card-btn">
+                Get Help
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+<section class="section about">
+
+    <div class="section-title">
+
+        <h2>About AgriVision</h2>
+
+    </div>
+
+    <div class="about-content">
+
+        <p>
+            AgriVision is a smart agriculture web platform designed
+            to bring important farming services together in one place.
+            The system combines AI-based crop disease detection,
+            weather information, market information, government
+            schemes, compensation support and farmer assistance
+            through a simple and accessible interface.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- HIGHLIGHTS -->
+<section class="section">
+
+    <div class="section-title">
+
+        <h2>AgriVision at a Glance</h2>
+
+    </div>
+
+    <div class="highlights">
+
+        <div class="highlight">
+            <h3>AI</h3>
+            <p>Crop Disease Analysis</p>
+        </div>
+
+        <div class="highlight">
+            <h3>🌦️</h3>
+            <p>Weather Support</p>
+        </div>
+
+        <div class="highlight">
+            <h3>📊</h3>
+            <p>Market Information</p>
+        </div>
+
+        <div class="highlight">
+            <h3>🌱</h3>
+            <p>Farmer Support</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <h3>🌱 AgriVision</h3>
+
+    <p>Smart Agriculture Support System</p>
+
+    <p>
+        Helping farmers make smarter and informed decisions.
+    </p>
+
+    <p>
+        © 2026 AgriVision. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+</body>
+</html>
