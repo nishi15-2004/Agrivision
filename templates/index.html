@@ -15,6 +15,7 @@
     <!-- Language System -->
     <script src="{{ url_for('static', filename='js/language.js') }}"
             defer></script>
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/chatbot.css') }}">
 </head>
 
 <body>
@@ -600,8 +601,88 @@
 ===================================================== -->
 
 <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<!-- =====================================================
+     AGRIMITRA AI CHATBOT
+===================================================== -->
 
+<div id="chatbot-container">
+
+    <div id="chatbot-header">
+
+        <div>
+            <strong>🌾 AgriMitra AI</strong>
+            <small>Farmer Assistant</small>
+        </div>
+
+        <button
+            id="chatbot-close"
+            onclick="toggleChatbot()">
+            ×
+        </button>
+
+    </div>
+
+
+    <div id="chatbot-messages">
+
+        <div class="chat-message bot-message">
+
+            👋 Namaste! Main <b>AgriMitra AI</b> hoon.
+
+            <br><br>
+
+            Aap mujhse farming, crop disease,
+            weather, irrigation, fertilizer aur
+            government schemes ke baare mein pooch sakte hain.
+
+        </div>
+
+    </div>
+
+
+    
+<div id="chatbot-input-area">
+
+    <button
+        id="chatbot-mic"
+        type="button"
+        title="Speak your question"
+        aria-label="Speak your question">
+        🎤
+    </button>
+
+    <input
+        type="text"
+        id="chatbot-input"
+        placeholder="Apna sawal likhiye..."
+        autocomplete="off"
+    >
+
+    <button
+        id="chatbot-send"
+        type="button"
+        onclick="sendChatMessage()">
+        ➤
+    </button>
+
+</div>
+
+</div>
+
+
+<!-- Floating Chat Button -->
+
+<button
+    id="chatbot-button"
+    onclick="toggleChatbot()">
+
+    💬
+
+</button>
+
+
+<script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
 </body>
 
 </html>
-```
+

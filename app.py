@@ -4,12 +4,17 @@ import requests
 import sqlite3
 from datetime import datetime
 import os
+from sympy import python
 from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash, check_password_hash
+
 
 import torch
 from torchvision import transforms, models
 from PIL import Image
+from dotenv import load_dotenv
+from pathlib import Path
+from openai import OpenAI
 
 
 # =========================================================
@@ -21,6 +26,22 @@ app.config["SECRET_KEY"] = os.environ.get(
     "FLASK_SECRET_KEY",
     "agrivision-local-development-key-change-before-deployment"
 )
+
+load_dotenv(Path(__file__).resolve().parent / ".env", override=True)
+
+
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+GROQ_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-20b")
+
+client = OpenAI(
+    api_key=GROQ_API_KEY,
+    base_url="https://api.groq.com/openai/v1"
+) if GROQ_API_KEY else None
+
+print("App file:", Path(__file__).resolve())
+print("Env file exists:", (Path(__file__).resolve().parent / ".env").is_file())
+print("Groq API key loaded:", bool(GROQ_API_KEY))
+print("Groq client created:", client is not None)
 
 DATABASE = "agrivision.db"
 
@@ -80,6 +101,7 @@ def init_users_table():
 
 
 init_users_table()
+
 
 
 
@@ -1944,16 +1966,75 @@ def health():
 # =========================================================
 # RUN
 # =========================================================
+# =========================
+# AGRIMITRA AI CHATBOT
+# =========================
+
+
+
+@app.route("/api/chat", methods=["POST"])
+def api_chat():
+    try:
+        data = request.get_json()
+
+        if not data:
+            return jsonify({
+                "success": False,
+                "error": "No message received."
+            }), 400
+
+        user_message = data.get("message", "").strip()
+        language = data.get("language", "English")
+
+        if not user_message:
+            return jsonify({
+                "success": False,
+                "error": "Please enter a message."
+            }), 400
+
+        if client is None:
+            return jsonify({
+                "success": False,
+                "error": "Groq API key is not configured."
+            }), 500
+
+        system_prompt = f"""
+You are AgriMitra, an AI agriculture assistant for Indian farmers.
+
+Help farmers with crop selection, crop diseases, farming practices,
+irrigation, fertilizers, weather-related farming advice, market prices,
+government schemes, compensation information, and general agriculture.
+
+Give simple, practical answers in the preferred language: {language}.
+Understand Hindi and Hinglish.
+Give step-by-step advice when useful.
+"""
+
+        response = client.chat.completions.create(
+            model=GROQ_MODEL,
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_message}
+            ]
+        )
+
+        answer = response.choices[0].message.content
+
+        return jsonify({
+            "success": True,
+            "reply": answer
+        })
+
+    except Exception:
+        app.logger.exception("Chatbot request failed")
+        return jsonify({
+            "success": False,
+            "error": "AI chatbot request failed."
+        }), 500
 
 if __name__ == "__main__":
-
-    print("=" * 60)
     print("AGRIVISION SMART AGRICULTURE SYSTEM")
-    print("=" * 60)
-    print("Database:", DATABASE)
-    print("Server: http://127.0.0.1:5000")
-    print("=" * 60)
+    print("Server: http://127.0.0.1:5001")
+    print("Groq model:", GROQ_MODEL)
 
-    app.run(
-        debug=True
-    )
+    app.run(host="127.0.0.1", port=5001, debug=True)
