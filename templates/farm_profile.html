@@ -1,0 +1,179 @@
+
+{% if message %}
+    <p style="color: green; font-weight: bold;">
+        {{ message }}
+    </p>
+{% endif %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Farm Profile | Agrivision</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f8ef;
+            margin: 0;
+            padding: 25px 15px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px #00000012;
+        }
+
+        h1 {
+            color: #24743a;
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+            color: #666;
+        }
+
+        label {
+            display: block;
+            margin-top: 16px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 11px;
+            margin-top: 7px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 24px;
+            padding: 13px;
+            background: #24743a;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 18px;
+            color: #24743a;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>My Farm Profile 🌱</h1>
+        <p>Apne aur apne farm ki details bharein.</p>
+
+       <form method="POST" action="/farm-profile" enctype="multipart/form-data">
+            <label for="mobile">Mobile Number</label>
+            <input type="tel" id="mobile" name="mobile"
+       placeholder="Enter mobile number"
+       value="{{ profile['mobile'] if profile else '' }}">
+
+            <label for="farm_name">Farm Name</label>
+            <input type="text" id="farm_name" name="farm_name"
+       placeholder="Enter your farm name"
+       value="{{ profile['farm_name'] if profile else '' }}">
+
+            <label for="land_area">Land Area</label>
+            <input type="text" id="land_area" name="land_area"
+       placeholder="e.g. 2 acres"
+       value="{{ profile['land_area'] if profile else '' }}">
+
+            <label for="soil_type">Soil Type</label>
+<select id="soil_type" name="soil_type">
+    <option value="">Select soil type</option>
+    <option value="Alluvial Soil" {% if profile and profile['soil_type'] == 'Alluvial Soil' %}selected{% endif %}>Alluvial Soil</option>
+    <option value="Black Soil" {% if profile and profile['soil_type'] == 'Black Soil' %}selected{% endif %}>Black Soil</option>
+    <option value="Red Soil" {% if profile and profile['soil_type'] == 'Red Soil' %}selected{% endif %}>Red Soil</option>
+    <option value="Sandy Soil" {% if profile and profile['soil_type'] == 'Sandy Soil' %}selected{% endif %}>Sandy Soil</option>
+    <option value="Clay Soil" {% if profile and profile['soil_type'] == 'Clay Soil' %}selected{% endif %}>Clay Soil</option>
+    <option value="Other" {% if profile and profile['soil_type'] == 'Other' %}selected{% endif %}>Other</option>
+</select>
+      
+
+
+
+            <label for="current_crop">Current Crop</label>
+            <input type="text" id="current_crop" name="current_crop"
+       placeholder="e.g. Wheat, Rice, Potato"
+       value="{{ profile['current_crop'] if profile else '' }}">
+
+
+            <label for="sowing_date">Sowing Date</label>
+            <input type="date" id="sowing_date" name="sowing_date"
+       value="{{ profile['sowing_date'] if profile else '' }}">
+
+
+            <label for="village">Village</label>
+            <input type="text" id="village" name="village"
+       placeholder="Enter village"
+       value="{{ profile['village'] if profile else '' }}">
+
+
+            <label for="district">District</label>
+            <input type="text" id="district" name="district"
+       placeholder="Enter district"
+       value="{{ profile['district'] if profile else '' }}">
+
+
+            <label for="state">State</label>
+            <input type="text" id="state" name="state"
+       placeholder="Enter state"
+       value="{{ profile['state'] if profile else '' }}">
+
+
+            <label for="irrigation">Irrigation Method</label>
+            <select id="irrigation" name="irrigation">
+    <option value="">Select irrigation method</option>
+    <option value="Drip Irrigation" {% if profile and profile['irrigation'] == 'Drip Irrigation' %}selected{% endif %}>Drip Irrigation</option>
+    <option value="Sprinkler Irrigation" {% if profile and profile['irrigation'] == 'Sprinkler Irrigation' %}selected{% endif %}>Sprinkler Irrigation</option>
+    <option value="Canal" {% if profile and profile['irrigation'] == 'Canal' %}selected{% endif %}>Canal</option>
+    <option value="Tubewell / Borewell" {% if profile and profile['irrigation'] == 'Tubewell / Borewell' %}selected{% endif %}>Tubewell / Borewell</option>
+    <option value="Rainfed" {% if profile and profile['irrigation'] == 'Rainfed' %}selected{% endif %}>Rainfed</option>
+    <option value="Other" {% if profile and profile['irrigation'] == 'Other' %}selected{% endif %}>Other</option>
+</select>
+
+
+            <label for="profile_photo">Farm Photo</label>
+            <input type="file" id="profile_photo"
+                   name="profile_photo" accept="image/*">
+                   
+{% if profile and profile['profile_photo'] %}
+    <div>
+        <p>Current Farm Photo:</p>
+        <img
+            src="{{ url_for('static', filename='uploads/' ~ profile['profile_photo']) }}"
+            alt="Farm Photo"
+            style="max-width: 250px; height: auto; border-radius: 10px;">
+    </div>
+{% endif %}
+
+
+            <button type="submit">Save Farm Profile</button>
+        </form>
+
+        <a class="back" href="/">Back to Home</a>
+    </div>
+</body>
+</html>

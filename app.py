@@ -103,6 +103,34 @@ def init_users_table():
 init_users_table()
 
 
+def init_farm_profiles_table():
+    conn = db_connection()
+    try:
+        conn.execute("""
+            CREATE TABLE IF NOT EXISTS farm_profiles (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id INTEGER NOT NULL UNIQUE,
+                mobile TEXT,
+                farm_name TEXT,
+                land_area TEXT,
+                soil_type TEXT,
+                current_crop TEXT,
+                sowing_date TEXT,
+                village TEXT,
+                district TEXT,
+                state TEXT,
+                irrigation TEXT,
+                profile_photo TEXT,
+                FOREIGN KEY (user_id) REFERENCES users(id)
+            )
+        """)
+        conn.commit()
+    finally:
+        conn.close()
+
+
+init_farm_profiles_table()
+
 
 
 # =========================================================
@@ -306,6 +334,99 @@ def home():
 @app.route("/login")
 def login():
     return render_template("login.html")
+
+
+
+@app.route("/farm-profile", methods=["GET", "POST"])
+def farm_profile():
+    if "user_id" not in session:
+        return redirect("/login")
+
+    user_id = session["user_id"]
+    message = None
+
+    conn = db_connection()
+
+    try:
+        if request.method == "POST":
+            mobile = request.form.get("mobile", "").strip()
+            farm_name = request.form.get("farm_name", "").strip()
+            land_area = request.form.get("land_area", "").strip()
+            soil_type = request.form.get("soil_type", "").strip()
+            current_crop = request.form.get("current_crop", "").strip()
+            sowing_date = request.form.get("sowing_date", "").strip()
+            village = request.form.get("village", "").strip()
+            district = request.form.get("district", "").strip()
+            state = request.form.get("state", "").strip()
+            irrigation = request.form.get("irrigation", "").strip()
+            
+            photo = request.files.get("profile_photo")
+            photo_filename = None
+
+            if photo and photo.filename:
+                safe_filename = secure_filename(photo.filename)
+                photo_filename = f"{user_id}_{safe_filename}"
+                photo.save(os.path.join(UPLOAD_FOLDER, photo_filename))
+
+            existing = conn.execute(
+                "SELECT id, profile_photo FROM farm_profiles WHERE user_id = ?",
+                (user_id,)
+            ).fetchone()
+
+            if existing and not photo_filename:
+                photo_filename = existing["profile_photo"]
+
+            if existing:
+                conn.execute("""
+                    UPDATE farm_profiles SET
+                        mobile=?, farm_name=?, land_area=?, soil_type=?,
+                        current_crop=?, sowing_date=?, village=?,
+                        district=?, state=?, irrigation=?, profile_photo=?
+                    WHERE user_id=?
+                """, (
+                    mobile, farm_name, land_area, soil_type,
+                    current_crop, sowing_date, village, district,
+                    state, irrigation, photo_filename, user_id
+                ))
+            else:
+               
+                conn.execute("""
+                    INSERT INTO farm_profiles (
+                        user_id, mobile, farm_name, land_area, soil_type,
+                        current_crop, sowing_date, village, district,
+                        state, irrigation, profile_photo
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """, (
+                    user_id, mobile, farm_name, land_area, soil_type,
+                    current_crop, sowing_date, village, district,
+                    state, irrigation, photo_filename
+                ))
+
+            conn.commit()
+            message = "Farm profile saved successfully!"
+
+        profile = conn.execute(
+            "SELECT * FROM farm_profiles WHERE user_id = ?",
+            (user_id,)
+        ).fetchone()
+
+    except sqlite3.Error:
+        conn.rollback()
+        message = "Error: Profile save nahi ho payi."
+        profile = None
+
+    finally:
+        conn.close()
+
+    return render_template(
+        "farm_profile.html",
+        message=message,
+        profile=profile
+    )
+
+
+
+
 
 @app.route("/logout")
 def logout():
