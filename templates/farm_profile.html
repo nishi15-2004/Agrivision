@@ -172,6 +172,93 @@
 
             <button type="submit">Save Farm Profile</button>
         </form>
+        
+<div style="margin-top: 25px; padding: 20px; border: 1px solid #c8e6c9; border-radius: 12px;">
+    <h3>🌱 AI Crop Advisor</h3>
+    <p>Apni saved farm profile ke basis par fasal ke liye AI suggestions paayein.</p>
+
+    <button type="button" id="getCropAdvice">
+        Get AI Crop Suggestions
+    </button>
+
+    <p id="cropAdviceStatus"></p>
+
+    <div id="cropAdviceResult"
+         style="white-space: pre-wrap; line-height: 1.6;"></div>
+</div>
+
+
+<script>
+document.getElementById("getCropAdvice").addEventListener("click", function () {
+    const status = document.getElementById("cropAdviceStatus");
+    const result = document.getElementById("cropAdviceResult");
+    const button = this;
+
+    button.disabled = true;
+    result.textContent = "";
+    status.textContent = "Location aur weather check ho raha hai...";
+
+    async function getAdvice(coords) {
+        try {
+            status.textContent = coords
+                ? "Current location ka weather check ho raha hai..."
+                : "Saved farm location se weather check ho raha hai...";
+
+            const response = await fetch("/api/farm-crop-advice", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(coords || {})
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || "Suggestions nahi mil paaye.");
+            }
+
+            result.textContent = data.advice || "";
+
+            if (data.weather) {
+                result.textContent +=
+                    "\n\nWeather Information:\n" + data.weather;
+            }
+
+            status.textContent = "Suggestions taiyar hain!";
+        } catch (error) {
+            status.textContent =
+                error.message || "Kuch error aaya. Dobara try karein.";
+        } finally {
+            button.disabled = false;
+        }
+    }
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            function (position) {
+                getAdvice({
+                    lat: position.coords.latitude,
+                    lon: position.coords.longitude
+                });
+            },
+            function () {
+                getAdvice(null);
+            },
+            {
+                enableHighAccuracy: false,
+                timeout: 10000,
+                maximumAge: 300000
+            }
+        );
+    } else {
+        getAdvice(null);
+    }
+});
+</script>
+
+
+
 
         <a class="back" href="/">Back to Home</a>
     </div>

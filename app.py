@@ -427,6 +427,143 @@ def farm_profile():
 
 
 
+@app.route("/api/farm-crop-advice", methods=["POST"])
+def farm_crop_advice():
+    if "user_id" not in session:
+        return jsonify({"error": "Please login first."}), 401
+
+    if client is None:
+        return jsonify({
+            "error": "AI service configured nahi hai. API key check karein."
+        }), 503
+
+    payload = request.get_json(silent=True) or {}
+    lat = payload.get("lat")
+    lon = payload.get("lon")
+
+    conn = db_connection()
+    try:
+        profile = conn.execute("""
+            SELECT land_area, soil_type, current_crop, sowing_date,
+                   village, district, state, irrigation
+            FROM farm_profiles
+            WHERE user_id = ?
+        """, (session["user_id"],)).fetchone()
+    finally:
+        conn.close()
+
+    if not profile:
+        return jsonify({"error": "Pehle Farm Profile save karein."}), 404
+
+    if not profile["current_crop"]:
+        return jsonify({"error": "Pehle Current Crop bharein."}), 400
+
+    weather_info = "Current location ka weather data available nahi hai."
+
+    try:
+        if lat is not None and lon is not None:
+            lat = float(lat)
+            lon = float(lon)
+
+            if not (-90 <= lat <= 90 and -180 <= lon <= 180):
+                raise ValueError("Invalid coordinates")
+
+            weather_url = (
+                "https://api.openweathermap.org/data/2.5/weather"
+                f"?lat={lat}&lon={lon}"
+                f"&appid={WEATHER_API_KEY}&units=metric"
+            )
+        else:
+            place = ", ".join(
+                str(profile[key]).strip()
+                for key in ("village", "district", "state")
+                if profile[key] and str(profile[key]).strip()
+            )
+            if not place:
+                return jsonify({
+                    "error": "Location allow karein ya Farm Profile mein village, district aur state bharein."
+                }), 400
+
+            weather_url = (
+                "https://api.openweathermap.org/data/2.5/weather"
+                f"?q={requests.utils.quote(place)}"
+                f"&appid={WEATHER_API_KEY}&units=metric"
+            )
+
+        weather_response = requests.get(weather_url, timeout=15)
+
+        if weather_response.status_code == 200:
+            w = weather_response.json()
+            main = w.get("main", {})
+            condition = w.get("weather", [{}])[0].get("description", "Unknown")
+            weather_info = (
+                f"Weather location: {w.get('name', 'Unknown')}\n"
+                f"Temperature: {main.get('temp', 'Unknown')} °C\n"
+                f"Humidity: {main.get('humidity', 'Unknown')}%\n"
+                f"Weather condition: {condition}\n"
+                f"Wind speed: {w.get('wind', {}).get('speed', 'Unknown')} m/s"
+            )
+        else:
+            weather_info = (
+                "Weather API current conditions nahi de paayi. "
+                "Weather data assume mat karein."
+            )
+
+    except (ValueError, requests.exceptions.RequestException) as e:
+        print("WEATHER FETCH ERROR:", type(e).__name__)
+        weather_info = "Weather data fetch nahi ho paaya. Weather assume mat karein."
+
+    farm_info = f"""
+Crop: {profile['current_crop'] or 'Not provided'}
+Sowing date: {profile['sowing_date'] or 'Not provided'}
+Soil type: {profile['soil_type'] or 'Not provided'}
+Land area: {profile['land_area'] or 'Not provided'}
+Irrigation: {profile['irrigation'] or 'Not provided'}
+Village: {profile['village'] or 'Not provided'}
+District: {profile['district'] or 'Not provided'}
+State: {profile['state'] or 'Not provided'}
+
+Actual weather information:
+{weather_info}
+"""
+
+    try:
+        response = client.chat.completions.create(
+            model=GROQ_MODEL,
+            messages=[
+                {
+                    "role": "system",
+                    "content": (
+                        "You are an agricultural advisor for Indian farmers. "
+                        "Reply in simple Hindi with clear headings and bullet points. "
+                        "Use only the supplied weather data; never invent weather or forecast. "
+                        "Give general crop care and irrigation guidance based on crop, "
+                        "soil and actual weather. Explain uncertainty and avoid specific "
+                        "pesticide doses or unsupported disease diagnoses."
+                    )
+                },
+                {
+                    "role": "user",
+                    "content": "Meri farm profile aur weather ke basis par salah dein:\n" + farm_info
+                }
+            ],
+            temperature=0.4,
+            max_tokens=700
+        )
+
+        advice = response.choices[0].message.content
+        return jsonify({
+            "advice": advice,
+            "weather": weather_info
+        })
+
+    except Exception as e:
+        print("CROP ADVISOR ERROR:", type(e).__name__)
+        return jsonify({
+            "error": "AI suggestions abhi nahi mil paaye. Server error check karein."
+        }), 502
+
+
 
 @app.route("/logout")
 def logout():
